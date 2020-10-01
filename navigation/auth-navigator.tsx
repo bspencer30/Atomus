@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Register from '../screens/Auth/Register';
+import Register from '../screens/auth/Register';
 
 const AuthNavigatorConfig = {
     initialRouteName: 'Register'

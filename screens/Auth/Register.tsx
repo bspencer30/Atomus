@@ -1,31 +1,45 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements'
 
-import EditScreenInfo from '../../components/EditScreenInfo';
 import { Text, View } from '../../components/Themed';
 
-export default function Register() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Register Screen</Text>
-      
-    </View>
-  );
+
+export default class Register extends React.Component {
+    onPressRegister = () => {
+
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.title}>Register Screen</Text>
+                <Button buttonStyle={styles.button} titleStyle={styles.button_text}title='Register with Google' onPress={this.onPressRegister}> </Button>
+            </View>
+        );
+    }
+
+
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#000000'
+    },
+    button_text:{
+        fontSize: 18,
+        //fontFamily: 'Nunito Sans',
+        fontWeight: 'bold',
+    },
+    button: {
+        backgroundColor: 'rgba(245, 176, 203, 0.64)'
+    }
+
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Student_Home from '../screens/Student/Student_Home';
+import Student_Home from '../screens/student/Student_Home';
 
 const StudentNavigatorConfig = {
     initialRouteName: 'Student_Home'

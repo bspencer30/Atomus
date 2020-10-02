@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Register from '../screens/auth/Register';
+import Splash from '../screens/auth/Splash';
 
 const AuthNavigatorConfig = {
-    initialRouteName: 'Register'
+    initialRouteName: 'Splash',
 };
 const RouteConfigs = {
-    Register: Register
+   Splash: {
+        screen: Splash,
+        navigationOptions: {
+            headerShown: false,
+        }
+    }
 };
 
 const AuthNavigator = createStackNavigator(RouteConfigs, AuthNavigatorConfig);

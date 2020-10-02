@@ -4,7 +4,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Student_Home from '../screens/student/Student_Home';
 
 const StudentNavigatorConfig = {
-    initialRouteName: 'Student_Home'
+    initialRouteName: 'Student_Home',
+    //headerMode: 
 };
 const RouteConfigs = {
     Student_Home: Student_Home

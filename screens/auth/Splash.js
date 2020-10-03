@@ -1,14 +1,18 @@
-//testing commit
 import * as React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native-elements';
+import { NavigationStackScreenProps } from 'react-navigation-stack';
 
-import { Text, View } from '../../components/Themed';
 import * as Google from 'expo-google-app-auth';
 import Colors from '../../constants/Colors';
 
-export default class Splash extends React.Component {
-    onPressRegister = async (userType: String) => {
+
+export default class Splash extends React.Component{
+    constructor(props){
+        super(props)
+    }
+    
+    onPressRegister = async (userType) => {
         const result = await Google.logInAsync({
             iosClientId: `1096496022788-ec1pa08baup3pf92vu9creh76hf76v47.apps.googleusercontent.com`,
             androidClientId: `1096496022788-4dnpffmibbebtfl912d0617atlvdj03u.apps.googleusercontent.com`,
@@ -16,6 +20,7 @@ export default class Splash extends React.Component {
         if (result.type == 'success') {
             //do some stuff
             //have access to result.accessToken, result.idToken, result.user
+            this.props.navigation.navigate('Student_Home');
         } else {
             console.log('Google Signin Cancelled.');
         }

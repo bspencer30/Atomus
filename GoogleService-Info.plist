@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1096496022788-ec1pa08baup3pf92vu9creh76hf76v47.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1096496022788-ec1pa08baup3pf92vu9creh76hf76v47</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1096496022788-4dnpffmibbebtfl912d0617atlvdj03u.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAI66FcRrU5b7TElUffP4O8EEUD14NAXJc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1096496022788</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>host.exp.exponent</string>
+	<key>PROJECT_ID</key>
+	<string>atomus-1601505206393</string>
+	<key>STORAGE_BUCKET</key>
+	<string>atomus-1601505206393.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1096496022788:ios:42a1e2fc14f9aa78c1fc51</string>
+	<key>DATABASE_URL</key>
+	<string>https://atomus-1601505206393.firebaseio.com</string>
+</dict>
+</plist>

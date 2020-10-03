@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1096496022788",
+    "firebase_url": "https://atomus-1601505206393.firebaseio.com",
+    "project_id": "atomus-1601505206393",
+    "storage_bucket": "atomus-1601505206393.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096496022788:android:56ae99c85586958fc1fc51",
+        "android_client_info": {
+          "package_name": "host.exp.exponent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096496022788-4dnpffmibbebtfl912d0617atlvdj03u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "host.exp.exponent",
+            "certificate_hash": "85e59c66a053261350b052b6fde4709ea89f6593"
+          }
+        },
+        {
+          "client_id": "1096496022788-o87pjm6se2qames5a2h1m2qeb6dl75pl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnPqyxcKMk5HUx0USA5f1txCibbNWqclE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1096496022788-o87pjm6se2qames5a2h1m2qeb6dl75pl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1096496022788-ec1pa08baup3pf92vu9creh76hf76v47.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "host.exp.exponent"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

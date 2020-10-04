@@ -1,14 +1,15 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
+import StudentDrawer from './drawer-student';
 
 import Student_Home from '../screens/student/Student_Home';
 
 const StudentNavigatorConfig = {
-    initialRouteName: 'Student_Home',
+    initialRouteName: 'StudentDrawer',
     //headerMode: 
 };
 const RouteConfigs = {
-    Student_Home: Student_Home
+    StudentDrawer: StudentDrawer,
 };
 
 const StudentNavigator = createStackNavigator(RouteConfigs, StudentNavigatorConfig);

@@ -1,4 +1,4 @@
-import {createAppContainer, createSwitchNavigator} from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 import AuthNavigator from './auth-navigator';
 import StudentNavigator from './student-navigator';
@@ -9,7 +9,7 @@ const RootNavigator = createSwitchNavigator(
         Student: StudentNavigator
     },
     {
-        initialRouteName: 'Auth'
+        initialRouteName: 'Student'
     }
 );
 export default createAppContainer(RootNavigator);

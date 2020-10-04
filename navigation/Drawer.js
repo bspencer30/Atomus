@@ -8,7 +8,7 @@ class Drawer extends Component {
         this.state = {
             list: [
                 { title: "Atomus", classId: 0 },
-                { title: "Math", classId: 0 }
+                { title: "Math", classId: 1 }
             ],
             index: 0,
         }
@@ -24,7 +24,11 @@ class Drawer extends Component {
 
         return (
             <SafeAreaView style={styles.background}>
-
+                <View style={styles.signout}>
+                    <Button title="Home" buttonStyle={{ height: "100%" }} onPress={() => {
+                        this.props.navigation.navigate("Home");
+                    }} />
+                </View>
                 <View style={styles.list}>{
                     this.state.list.map((item, i) => (
 
@@ -32,7 +36,8 @@ class Drawer extends Component {
                         <ListItem key={i} bottomDivider
                             onPress={() => {
                                 this.setState({ index: i });
-                                alert(item.title);
+                                console.log("index: " + i);
+                                this.props.navigation.navigate("Class", { title: item.title });
                             }}
                             containerStyle={{ backgroundColor: (this.state.index == i) ? "green" : "white" }}
                         >

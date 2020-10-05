@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { SafeAreaView, View, StyleSheet } from "react-native";
 import { ListItem, Icon, Input, Button } from 'react-native-elements'
+
+import * as firebase from 'firebase';
+
 class Drawer extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +23,12 @@ class Drawer extends Component {
         tempList.push({ title: name, classId: id });
         this.setState({ list: tempList });
     }
+
+    signOut(){
+        firebase.auth().signOut();
+        this.props.navigation.navigate('Splash');
+    }
+
     render() {
 
         return (
@@ -48,7 +57,7 @@ class Drawer extends Component {
                     ))
                 }</View>
                 <View style={styles.signout}>
-                    <Button title="Sign Out" buttonStyle={{ height: "100%" }} onPress={() => { this.addclass("hello", 2); }} />
+                    <Button title="Sign Out" buttonStyle={{ height: "100%" }} onPress={() => this.signOut()} />
                 </View>
             </SafeAreaView>
         );

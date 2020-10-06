@@ -1,15 +1,19 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 import AuthNavigator from './auth-navigator';
-import StudentNavigator from './student-navigator';
+import StudentDrawer from './student/drawer-student';
 
-const RootNavigator = createSwitchNavigator(
-    {
-        Auth: AuthNavigator,
-        Student: StudentNavigator
+const RootNavConfig = {
+    initialRouteName: 'Auth'
+}
+const RouteConfig = {
+    Auth: {
+        screen: AuthNavigator
     },
-    {
-        initialRouteName: 'Student'
+    Student: {
+        screen: StudentDrawer,
     }
-);
+}
+
+const RootNavigator = createSwitchNavigator(RouteConfig, RootNavConfig)
 export default createAppContainer(RootNavigator);

@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { createStackNavigator } from 'react-navigation-stack';
+import { Text } from 'react-native';
+import { createStackNavigator, HeaderBackButton } from 'react-navigation-stack';
 
 import Splash from '../screens/auth/Splash';
+import Login from '../screens/auth/Login';
 
 const AuthNavigatorConfig = {
     initialRouteName: 'Splash',
@@ -12,6 +14,14 @@ const RouteConfigs = {
         navigationOptions: {
             headerShown: false,
         }
+    },
+    Login: {
+        screen: Login,
+        navigationOptions: ({navigation}) => ({
+            headerTitle: () => <Text/>,
+            headerTransparent: true, 
+            headerLeft:() => <HeaderBackButton tintColor={'#2E2F2F'} labelVisible={false} onPress={()=>{navigation.navigate('Splash')}}/>
+        })
     }
 };
 

@@ -20,6 +20,10 @@ export default {
         color: '#f4d06f',
         six4: 'rgba(244, 208, 111, 0.64)'
     },
+    beige:{
+        color: '#e9e4d8',
+        six4: 'rgba(233, 228, 216, 0.64)'
+    },
     blue: {
         color: '#84bcda',
         six4: 'rgba(132, 188, 218, 0.64)'

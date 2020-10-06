@@ -16,4 +16,5 @@ const RouteConfig = {
 }
 
 const RootNavigator = createSwitchNavigator(RouteConfig, RootNavConfig)
+
 export default createAppContainer(RootNavigator);

@@ -17,8 +17,14 @@ exports.googleLogin = async (user_type) => {
     });
 
     if (result.type == 'success') {
-        const { idToken, accessToken } = result;
-        const credentials = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
+        const { idToken, accessToken, refreshToken } = result;
+        
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('https://www.googleapis.com/auth/classroom.courses.readonly');
+        const credentials = provider.credential(idToken, accessToken);
+        console.log(credentials);
+
+        //const credentials = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
         var container = await firebase.auth().signInWithCredential(credentials).then(async (result) => {
             const uid = result.user.uid;
             if (result.additionalUserInfo.isNewUser) {
@@ -30,7 +36,7 @@ exports.googleLogin = async (user_type) => {
                     uid: uid
                 };
                 firebase.database().ref("users/" + uid).set(user);
-                return { user: user, credentials: credentials};
+                return { user: user, credentials: {refresh_token: refreshToken, access_token: accessToken, id_token: idToken}};
             } else {
                 console.log('Logging in Existing User: ' + uid);
                 var container = await firebase.database().ref("users/" + uid).once('value').then(snapshot => {
@@ -41,7 +47,7 @@ exports.googleLogin = async (user_type) => {
                         user_type: data.user_type,
                         uid: uid
                     };
-                    return { user: user, credentials: credentials}
+                    return { user: user, credentials: {refresh_token: refreshToken, access_token: accessToken, id_token: idToken}}
                 });
                 return container;
             }

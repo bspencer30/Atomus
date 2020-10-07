@@ -25,11 +25,13 @@ export default class Splash extends React.Component {
         const result = await Google.logInAsync({
             iosClientId: `1096496022788-ec1pa08baup3pf92vu9creh76hf76v47.apps.googleusercontent.com`,
             androidClientId: `1096496022788-4dnpffmibbebtfl912d0617atlvdj03u.apps.googleusercontent.com`,
+            scopes: ["https://www.googleapis.com/auth/classroom.courses.readonly"],
         });
         if (result.type == 'success') {
             console.log('Attempting to log user in');
             const { idToken, accessToken } = result;
             console.log(accessToken)
+            global.accessToken = accessToken;
             const credential = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
             firebase.auth().signInWithCredential(credential).then(res => {
                 const uid = res.user.uid;
@@ -41,7 +43,7 @@ export default class Splash extends React.Component {
                         user_type: user_type
                     }
                     firebase.database().ref("users/" + uid).set(user);
-                    const user_con = {user: user, uid: uid, credential: credential }                  
+                    const user_con = { user: user, uid: uid, credential: credential }
                     this.navigatorToScreen(data.user_type, user_con);
                 } {
                     console.log('Logging in Existing User : ' + uid);

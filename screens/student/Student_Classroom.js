@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
-export default class Student_Classroom extends Component {
+
+
+class Student_Classroom extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-           class_title: ''
+           course: null
         }
-        this.class_title = this.props.navigation.getParam('title');
+        this.course = this.props.navigation.getParam('course');
+       
     }
 
     render() {
-        console.log(this.state.class_title);
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>{this.class_title}</Text>
+                <Text style={styles.title}>{this.course.course_id + '\n' + this.course.name}</Text>
             </View>
         );
     }
@@ -31,3 +33,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 })
+export default Student_Classroom;

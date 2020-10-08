@@ -2,29 +2,16 @@ import * as Google from 'expo-google-app-auth';
 import * as firebase from 'firebase';
 
 
-exports.createUser = async () => {
-
-}
-
-exports.loginUser = async () => {
-
-}
-
 exports.googleLogin = async (user_type) => {
     const result = await Google.logInAsync({
         iosClientId: `1096496022788-ec1pa08baup3pf92vu9creh76hf76v47.apps.googleusercontent.com`,
         androidClientId: `1096496022788-4dnpffmibbebtfl912d0617atlvdj03u.apps.googleusercontent.com`,
+        scopes: ["https://www.googleapis.com/auth/classroom.courses.readonly"],
     });
 
     if (result.type == 'success') {
         const { idToken, accessToken, refreshToken } = result;
-        
-        var provider = new firebase.auth.GoogleAuthProvider();
-        provider.addScope('https://www.googleapis.com/auth/classroom.courses.readonly');
-        const credentials = provider.credential(idToken, accessToken);
-        console.log(credentials);
-
-        //const credentials = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
+        const credentials = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
         var container = await firebase.auth().signInWithCredential(credentials).then(async (result) => {
             const uid = result.user.uid;
             if (result.additionalUserInfo.isNewUser) {
@@ -62,4 +49,12 @@ exports.googleLogin = async (user_type) => {
 
 }
 
-
+exports.googleLogout = async (access_token) => {
+    await firebase.auth().signOut();
+    const result = await Google.logOutAsync({
+        iosClientId: `1096496022788-ec1pa08baup3pf92vu9creh76hf76v47.apps.googleusercontent.com`,
+        androidClientId: `1096496022788-4dnpffmibbebtfl912d0617atlvdj03u.apps.googleusercontent.com`,
+        accessToken: access_token
+    });
+    return result
+}

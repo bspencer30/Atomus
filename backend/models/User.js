@@ -10,6 +10,5 @@ module.exports = class User {
         this.email = email;
         this.uid = uid;
         this.user_type = user_type;
-        //this.credentials = credentials;
     }
 }

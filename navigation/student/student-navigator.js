@@ -13,7 +13,7 @@ const RouteConfigs = {
         screen: Student_Home,
         navigationOptions: ({navigation}) => ({
             headerTitle: () => <Text testing />,
-            //headerTransparent: true, 
+            headerTransparent: true, 
             headerLeft:() => <Icon color ='#2E2F2F' name="menu" onPress={()=>{navigation.openDrawer()}}/>
         })
     },
@@ -22,7 +22,7 @@ const RouteConfigs = {
         screen: Student_Classroom,
           navigationOptions: ({navigation}) => ({
             headerTitle: () => <Text testing />,
-            //headerTransparent: true, 
+            headerTransparent: true, 
             headerLeft:() => <HeaderBackButton labelVisible={false} tintColor='#2E2F2F' onPress={()=>{navigation.goBack()}}/>
         })
     }

@@ -1,6 +1,8 @@
 import createDataContext from './createDataContext';
 import User from '../backend/models/User'
 import Course from '../backend/models/Course'
+import CourseWork from '../backend/models/CourseWork'
+
 import userService from '../backend/services/userService'
 import courseService from '../backend/services/courseService'
 
@@ -32,37 +34,45 @@ const loginUser = (dispatch) => {
 }
 
 const logoutUser = (dispatch) => {
-    return async(access_token) => {
+    return async (access_token) => {
         var result = userService.googleLogout(access_token);
-        dispatch({type: "logout_user", user: null, credentials: null})
+        dispatch({ type: "logout_user", user: null, credentials: null })
     }
 }
 
 const getCourses = (dispatch) => {
-    return async(access_token) => {
+    return async (access_token) => {
         var courses = [];
-        var course_data = await courseService.getCourses(access_token);      
-        course_data.forEach(course => {
-            if(course.courseState == "ACTIVE"){
-                courses.push(new Course(course.id, course.name));
-            }
-        })
-        dispatch({type: "add_courses", courses: courses})
-     }
+        var course_data = await courseService.getCourses(access_token);
+        await Promise.all(course_data.map(async (course) => {
+            var course_work = await _getCourseWork(access_token, course.id);
+            courses.push(new Course(course.id, course.name, course_work));
+        }));
+        console.log('Adding ' + courses.length + ' courses to appContext.');
+        dispatch({ type: "add_courses", courses: courses });
+    }
 }
 
-
-
+const _getCourseWork = async (access_token, course_id) => {
+    var course_work = [];
+    var work_data = await courseService.getCourseWork(access_token, course_id);
+    work_data.forEach(work => {
+        if(typeof work.dueDate == "undefined") work.dueDate = {};
+        if(typeof work.dueTime == "undefined") work.dueTime = {};
+        course_work.push(new CourseWork(work.id, work.description, work.dueDate, work.dueTime, work.title));
+    })
+    return course_work;
+}
 
 export const { Provider, Context } = createDataContext(
     authReducer, {
     loginUser,
     logoutUser,
-    getCourses
+    getCourses,
 },
     {
         user: null,
         credentials: null,
-        courses: null
+        courses: null,
     }
 )

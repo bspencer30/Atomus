@@ -16,6 +16,7 @@ class Splash extends Component {
             console.log("User logged in.")
             switch(this.context.state.user.user_type){
                 case "student":
+                    await this.context.getCourses(this.context.state.credentials.access_token);
                     this.navigation.navigate("Student");
                     break;
                 case "parent":

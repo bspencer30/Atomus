@@ -14,7 +14,7 @@ const RouteConfigs = {
         navigationOptions: ({navigation}) => ({
             headerTitle: () => <Text testing />,
             headerTransparent: true, 
-            headerLeft:() => <Icon color ='#2E2F2F' name="menu" onPress={()=>{navigation.openDrawer()}}/>
+            headerLeft:() => <Icon style={{paddingLeft:10}}color ='#2E2F2F' name="menu" onPress={()=>{navigation.openDrawer()}}/>
         })
     },
     

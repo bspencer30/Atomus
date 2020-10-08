@@ -16,7 +16,7 @@ class Student_Classroom extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>{this.course.course_id + '\n' + this.course.name}</Text>
+                <Text style={styles.title}>{this.course.course_id + '\n' + this.course.name + '\n' + this.course.work.length}</Text>
             </View>
         );
     }

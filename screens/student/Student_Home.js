@@ -1,7 +1,7 @@
 import * as React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Button } from "react-native-elements";
 import { Context as AppContext } from "../../context/appContext";
+import Colors from "../../constants/Colors";
 
 class Student_Home extends React.Component {
     constructor(props) {
@@ -16,25 +16,7 @@ class Student_Home extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>Student Home</Text>
-                <Text style={styles.title}>{this.state.user.display_name}</Text>
-                <Button title="add" onPress={() => {
-                    console.log('Attempting to get user data')
-                    var obj = {
-                        method: "GET",
-                        headers: new Headers({
-                            "Authorization" : "Bearer " + this.state.credentials.access_token,
-                        }),
-                    }
-
-                    
-                    fetch('https://classroom.googleapis.com/v1/courses', obj).then((response) => response.json()).then((responseJson) => console.log(responseJson))
-
-
-
-
-
-                }} />
+                <Text style={styles.header}>Today's Assignments</Text>
             </View>
         );
     }
@@ -45,11 +27,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        //justifyContent: 'center',
+        backgroundColor: Colors.beige.six4
     },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
+    header: {
+        fontSize: 35,
+        paddingTop: 45
+        //fontWeight: 'bold',
     },
     separator: {
         marginVertical: 30,

@@ -1,8 +1,32 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Image} from 'react-native';
+import { Button } from 'react-native-elements';
+import { Context as AppContext} from '../../context/appContext'
 import Colors from '../../constants/Colors'
 
 export default class Login extends React.Component {
+    constructor(props) {
+        super(props)
+        this.navigation = this.props.navigation;
+    }
+
+    handleRegister = async (user_type) => {
+        await this.context.loginUser(user_type);
+        if(this.context.state.user){
+            console.log("User logged in.")
+            switch(this.context.state.user.user_type){
+                case "student":
+                    await this.context.getCourses(this.context.state.credentials.access_token);
+                    this.navigation.navigate("Student");
+                    break;
+                case "parent":
+                    break;
+                case "teacher":
+                    break;
+                default:
+            }
+        }
+    }
 
     render() {
         return (
@@ -11,6 +35,13 @@ export default class Login extends React.Component {
                     style={styles.image}
                     source={require('../../assets/images/icon_light.png')}
                 />
+                <Text style={styles.title} >Login</Text>
+                <View style={styles.button_group}>
+                    <Button buttonStyle={styles.button}
+                    titleStyle={styles.button_text}
+                    title="Login"
+                    onPress={() => this.handleRegister("student")}> </Button>
+                </View>
                 <Text Login Page />
             </View>
         );
@@ -70,3 +101,4 @@ const styles = StyleSheet.create({
         left: 220
     }
 });
+Login.contextType = AppContext;

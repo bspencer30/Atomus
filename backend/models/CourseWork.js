@@ -7,9 +7,9 @@ module.exports = class CourseWork {
         title,
     ){
         this.course_work_id = course_work_id,
-        this.description = description,
-        this.due_date = due_date,
-        this.due_time = due_time,
+        this.description = description
+        this.due_date = due_date
+        this.due_time = due_time
         this.title = title
     }
 }

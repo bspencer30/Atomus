@@ -7,7 +7,7 @@ exports.getCourses= async (access_token) => {
             "Authorization" : "Bearer " + access_token,
         }),
     }
-    const url = urlbase + "/courses?courseStates=ACTIVE"
+    const url = urlbase + "/courses?courseStates=ACTIVE&studentId=me"
     var courses = await fetch(url, request).then((response) => response.json()).then((responseJson) => {
         return responseJson.courses;
     })

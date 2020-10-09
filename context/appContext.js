@@ -57,8 +57,9 @@ const _getCourseWork = async (access_token, course_id) => {
     var course_work = [];
     var work_data = await courseService.getCourseWork(access_token, course_id);
     work_data.forEach(work => {
-        if(typeof work.dueDate == "undefined") work.dueDate = {};
-        if(typeof work.dueTime == "undefined") work.dueTime = {};
+        if(typeof work.dueDate == "undefined") work.dueDate = {day: 1, month: 1, year: 2020};
+        if(typeof work.dueTime == "undefined") work.dueTime = {hours: 5, minutes: 30};
+        if(typeof work.description == "undefined") work.description = "No Description"
         course_work.push(new CourseWork(work.id, work.description, work.dueDate, work.dueTime, work.title));
     })
     return course_work;

@@ -26,6 +26,8 @@ const loginUser = (dispatch) => {
         var user_con = await userService.googleLogin(user_type).then(user_con => { return user_con });
         if (user_con.status == "user_cancel") {
             dispatch({ type: "login_error", login_err_msg: { "message": user_con.message, "status": user_con.status } })
+        } else if (user_con.status == "user_needs_type") {
+            dispatch({ type: "login_error", login_err_msg: { "message": user_con.message, "status": user_con.status } })
         } else {
             var user = new User(user_con.user.display_name, user_con.user.email, user_con.user.uid, user_con.user.user_type);
             dispatch({ type: "login_user", user: user, credentials: user_con.credentials })
@@ -58,11 +60,12 @@ const _getCourseWork = async (access_token, course_id) => {
     var work_data = await courseService.getCourseWork(access_token, course_id);
     work_data.forEach(work => {
         console.log(work);
-        if(typeof work.dueDate == "undefined"){ 
+        if (typeof work.dueDate == "undefined") {
             console.log(typeof work.dueDate);
-            work.dueDate = {day: 1, month: 1, year: 2020}; }
-        if(typeof work.dueTime == "undefined"){ work.dueTime = {hours: 5, minutes: 30}; }
-        if(typeof work.description == "undefined"){ work.description = "No Description" }
+            work.dueDate = { day: 1, month: 1, year: 2020 };
+        }
+        if (typeof work.dueTime == "undefined") { work.dueTime = { hours: 5, minutes: 30 }; }
+        if (typeof work.description == "undefined") { work.description = "No Description" }
         course_work.push(new CourseWork(work.id, work.description, work.dueDate, work.dueTime, work.title));
     })
     return course_work;

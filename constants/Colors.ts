@@ -1,21 +1,21 @@
-export default {
-    beige:{
-        color: "#E9E4D8",
-        six4: 'rgba(233, 228, 216, 0.64)'
-    },
-    blue: {
-        color: "#84BCDA",
-        six4: 'rgba(132, 188, 218, 0.64)'
-    },
+export default {  
     pink: {
-        color: "#F5B0CB",
-        six4: 'rgba(245, 176, 203, 0.64)'
-    },
-    grey:{
-        color: "#2E2F2F"
+        opaque: "rgba(241, 157, 180, 1)",
+        semi_transparent: "rgba(235, 116, 148, .64)"
+    }, 
+    turquoise:{
+        opaque: "rgba(140, 212, 204, 1)",
+        semi_transparent: "rgba(140, 212, 204, .64)"
     },
     yellow: {
-        color: "#F4D06F",
-        six4: 'rgba(244, 208, 111, 0.64)'
+        opaque: "rgba(256, 217, 139, 1)",
+        semi_transparent: "rgba(244, 208, 111, 0.64)"
+    },
+    beige:{
+        opaque: "rgba(233, 228, 216, 1)",
+        semi_transparent: "rgba(233, 228, 216, 0.64)"
+    },
+    grey:{
+        opaque: "#818282"
     },
 };

@@ -1,7 +1,7 @@
 import { database } from "firebase";
 import React, { Component } from "react";
 import { StyleSheet, ScrollView, View, Text, Button } from "react-native";
-import AtomusCard from "../../components/card"
+import AtomusCard from "../../components/Card"
 import Colors from "../../constants/Colors";
 
 

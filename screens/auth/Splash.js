@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-elements';
-import {Context as AppContext } from '../../context/appContext'
-import Colors from '../../constants/Colors';
+import React, { Component } from "react"
+import { Image, StyleSheet, View } from "react-native"
+
+import { Context as AppContext } from "../../context/appContext"
+import Colors from "../../constants/Colors"
+import AtomusText from "../../components/Text"
+import AtomusButton from "../../components/Button"
 
 class Splash extends Component {
     constructor(props) {
@@ -12,9 +14,9 @@ class Splash extends Component {
 
     handleRegister = async (user_type) => {
         await this.context.loginUser(user_type);
-        if(this.context.state.user){
+        if (this.context.state.user) {
             console.log("User logged in.")
-            switch(this.context.state.user.user_type){
+            switch (this.context.state.user.user_type) {
                 case "student":
                     await this.context.getCourses(this.context.state.credentials.access_token);
                     this.navigation.navigate("Student");
@@ -25,7 +27,7 @@ class Splash extends Component {
                     break;
                 default:
             }
-        }           
+        }
     }
 
     render() {
@@ -33,15 +35,16 @@ class Splash extends Component {
             <View style={styles.container}>
                 <Image
                     style={styles.image}
-                    source={require('../../assets/images/icon_light.png')}
+                    source={require('../../assets/images/splash_transparent.png')}
                 />
-                <Text style={styles.title}>Atomus</Text>
+                <AtomusText text={"Atomus"} fontSize={40} style={styles.title} />
                 <View style={styles.button_group}>
-                    <Button buttonStyle={[styles.button, styles.student]} titleStyle={styles.button_text} title="Student" onPress={() => this.handleRegister("student")}> </Button>
-                    <Button buttonStyle={[styles.button, styles.parent]} titleStyle={styles.button_text} title="Parent" onPress={() => this.onPressRegister("parent")}> </Button>
-                    <Button buttonStyle={[styles.button, styles.teacher]} titleStyle={styles.button_text} title="Teacher" onPress={() => this.onPressRegister("teacher")}> </Button>
+                    <AtomusButton backgroundColor={Colors.turquoise.opaque} title={"Student"} onPress={() => this.handleRegister("student")} />
+                    <AtomusButton backgroundColor={Colors.yellow.opaque} title={"Parent"} onPress={() => this.handleRegister("parent")} />
+                    <AtomusButton backgroundColor={Colors.pink.opaque} title={"Teacher"} onPress={() => this.handleRegister("teacher")} />
+                    <AtomusText text={"Returning User?"} style={{ textAlign: "right", paddingRight: 8 }} onPress={() => this.navigation.navigate("Login")} />
                 </View>
-                <Text style={styles.returningUser} onPress={() => this.props.navigation.navigate("Login")}>Returning User?</Text>
+
             </View>
         );
     }
@@ -50,55 +53,21 @@ class Splash extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        //justifyContent: 'center',
-        backgroundColor: Colors.beige.color
+        alignItems: "center",
+        backgroundColor: Colors.beige.opaque,
     },
     image: {
-        position: "absolute",
-        width: 516,
-        height: 542,
-        top: -41
+        width: 440,
+        height: 440,
     },
     title: {
         position: "absolute",
-        fontWeight: "bold",
-        top: 200,
-        fontSize: 50,
-    },
-    button_text: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#000000'
-    },
-    button: {
-        width: 280,
-        height: 60,
-        borderRadius: 15,
+        top: "27%",
     },
     button_group: {
-        position: "absolute",
-        top: 400,
-        justifyContent: 'space-between',
-        height: 220,
-        backgroundColor: 'rgba(1, 1, 1, 0)'
+        justifyContent: "space-between",
+        height: 200,
     },
-    student: {
-        backgroundColor: Colors.blue.six4,
-    },
-    parent: {
-        backgroundColor: Colors.pink.six4,
-    },
-    teacher: {
-        backgroundColor: Colors.yellow.six4
-    },
-    returningUser: {
-        position: "absolute",
-        fontSize: 16,
-        fontWeight: "bold",
-        top: 630,
-        left: 220
-    }
 });
 
 Splash.contextType = AppContext;

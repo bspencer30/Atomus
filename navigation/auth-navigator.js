@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { Text } from 'react-native';
-import { createStackNavigator, HeaderBackButton } from 'react-navigation-stack';
+import * as React from "react";
+import { Text } from "react-native";
+import { createStackNavigator, HeaderBackButton } from "react-navigation-stack";
 
-import Splash from '../screens/auth/Splash';
-import Login from '../screens/auth/Login';
+import Splash from "../screens/auth/Splash";
+import Login from "../screens/auth/Login";
 
 const AuthNavigatorConfig = {
-    initialRouteName: 'Splash',
+    initialRouteName: "Splash",
 };
 const RouteConfigs = {
-   Splash: {
+    Splash: {
         screen: Splash,
         navigationOptions: {
             headerShown: false,
@@ -17,11 +17,11 @@ const RouteConfigs = {
     },
     Login: {
         screen: Login,
-        navigationOptions: ({navigation}) => ({
-            headerTitle: () => <Text/>,
-            headerTransparent: true, 
-            headerLeft:() => <HeaderBackButton tintColor={'#2E2F2F'} labelVisible={false} onPress={()=>{navigation.navigate('Splash')}}/>
-        })
+        navigationOptions: ({ navigation }) => ({
+            headerTitle: () => <Text />,
+            headerTransparent: true,
+            headerLeft: () => <HeaderBackButton tintColor={'#000000'} labelVisible={false} onPress={() => { navigation.navigate("Splash") }} />
+        }),
     }
 };
 

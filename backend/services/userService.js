@@ -16,15 +16,21 @@ exports.googleLogin = async (user_type) => {
         var container = await firebase.auth().signInWithCredential(credentials).then(async (result) => {
             const uid = result.user.uid;
             if (result.additionalUserInfo.isNewUser) {
-                console.log('Creating New User: ' + uid);
-                const user = {
-                    email: result.user.email,
-                    display_name: result.user.displayName,
-                    user_type: user_type,
-                    uid: uid
-                };
-                firebase.database().ref("users/" + uid).set(user);
-                return { user: user, credentials: { refresh_token: refreshToken, access_token: accessToken, id_token: idToken } };
+                if (user_type == "NA") {
+                    console.log("New User attempted to login without registering.\n Go to screen and register as a user_type");
+                    return { status: "user_needs_type", message: "User Needs to Register" };
+                }
+                else {
+                    console.log('Creating New User: ' + uid);
+                    const user = {
+                        email: result.user.email,
+                        display_name: result.user.displayName,
+                        user_type: user_type,
+                        uid: uid
+                    };
+                    firebase.database().ref("users/" + uid).set(user);
+                    return { user: user, credentials: { refresh_token: refreshToken, access_token: accessToken, id_token: idToken } };
+                }
             } else {
                 console.log('Logging in Existing User: ' + uid);
                 var container = await firebase.database().ref("users/" + uid).once('value').then(snapshot => {

@@ -1,39 +1,40 @@
 {
-    "expo": {
-        "name": "Atomus",
-        "slug": "Atomus",
-        "version": "1.0.0",
-        "orientation": "portrait",
-        "icon": "./assets/images/icon.png",
-        "scheme": "myapp",
-        "userInterfaceStyle": "automatic",
-        "splash": {
-            "image": "./assets/images/icon_light.png",
-            "resizeMode": "contain",
-            "backgroundColor": "#E9E4D8"
-        },
-        "updates": {
-            "fallbackToCacheTimeout": 0
-        },
-        "assetBundlePatterns": [
-            "**/*"
-        ],
-        "ios": {
-            "supportsTablet": true,
-            "bundleIdentifier": "host.exp.exponent",
-            "config": {
-                "googleSignIn": {
-                    "reservedClientId": "com.googleusercontent.apps.1096496022788-ec1pa08baup3pf92vu9creh76hf76v47"
-                }
-            },
-            "googleServicesFile": "./GoogleService-Info.plist"
-        },
-        "android": {
-            "package": "host.exp.exponent",
-            "googleServicesFile": "./google-services.json"
-        },
-        "web": {
-            "favicon": "./assets/images/favicon.png"
+  "expo": {
+    "name": "Atomus",
+    "slug": "Atomus",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/icon_light.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#E9E4D8"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "host.exp.exponent",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.1096496022788-ec1pa08baup3pf92vu9creh76hf76v47"
         }
-    }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist"
+    },
+    "android": {
+      "package": "host.exp.exponent",
+      "googleServicesFile": "./google-services.json"
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
+    },
+    "description": ""
+  }
 }

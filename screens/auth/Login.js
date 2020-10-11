@@ -12,7 +12,7 @@ export default class Login extends React.Component {
 
     handleRegister = async (user_type) => {
         await this.context.loginUser(user_type);
-        if(this.context.state.user){
+        if(this.context.state.user != null){
             console.log("User logged in.")
             switch(this.context.state.user.user_type){
                 case "student":
@@ -76,10 +76,11 @@ const styles = StyleSheet.create({
         width: 280,
         height: 60,
         borderRadius: 15,
+        backgroundColor: 'rgba(68, 175, 105, .64)'
     },
     button_group: {
         position: "absolute",
-        top: 400,
+        top: 480,
         justifyContent: 'space-between',
         height: 220,
         backgroundColor: 'rgba(1, 1, 1, 0)'

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         //justifyContent: 'center',
-        backgroundColor: Colors.beige.six4
+        backgroundColor: Colors.beige.color
     },
     image: {
         position: "absolute",

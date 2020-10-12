@@ -6,7 +6,7 @@ import Colors from "../../constants/Colors"
 import AtomusCard from "../../components/Card"
 import AtomusText from "../../components/Text"
 
-class Student_Classroom extends Component {
+class Student_Course extends Component {
 
     constructor(props) {
         super(props);
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
         paddingTop: 50
     }
 })
-export default Student_Classroom;
+export default Student_Course;

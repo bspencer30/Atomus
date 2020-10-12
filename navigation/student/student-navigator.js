@@ -3,9 +3,9 @@ import { Text } from "react-native"
 import { createStackNavigator, HeaderBackButton } from "react-navigation-stack"
 import { Icon } from "react-native-elements"
 
-import Student_Coursework_Detail from "../../screens/student/CourseworkDetail"
-import Student_Classroom from "../../screens/student/Student_Classroom"
-import Student_Home from "../../screens/student/Student_Home"
+import Student_CourseworkDetail from "../../screens/student/Coursework"
+import Student_Course from "../../screens/student/Course"
+import Student_Home from "../../screens/student/Home"
 
 const StudentNavConfig = {
     initialRouteName: 'Home',
@@ -20,7 +20,7 @@ const RouteConfigs = {
     },
     
     Class: {
-        screen: Student_Classroom,
+        screen: Student_Course,
           navigationOptions: ({navigation}) => ({
             //headerTitle: () => <Text testing />,
             headerTransparent: true, 
@@ -28,7 +28,7 @@ const RouteConfigs = {
         })
     },
     Coursework: {
-        screen: Student_Coursework_Detail,
+        screen: Student_CourseworkDetail,
           navigationOptions: ({navigation}) => ({
             //headerTitle: () => <Text testing />,
             headerTransparent: true, 

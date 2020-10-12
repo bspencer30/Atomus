@@ -6,7 +6,7 @@ import { Context as AppContext } from "../../context/appContext";
 import Colors from "../../constants/Colors";
 import AtomusText from "../../components/Text"
 
-class Student_Coursework_Detail extends Component {
+class Student_CourseworkDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {}
@@ -25,7 +25,7 @@ class Student_Coursework_Detail extends Component {
         );
     }
 }
-Student_Coursework_Detail.contextType = AppContext;
+Student_CourseworkDetail.contextType = AppContext;
 
 const styles = StyleSheet.create({
     container: {
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Student_Coursework_Detail;
+export default Student_CourseworkDetail;

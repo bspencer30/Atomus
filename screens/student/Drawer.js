@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { SafeAreaView, View, StyleSheet, Text } from 'react-native';
-import { ListItem, Icon, Input, Button } from 'react-native-elements'
-import { Context as AppContext } from '../../context/appContext';
-import Colors from '../../constants/Colors';
+import React, { Component } from "react"
+import { SafeAreaView, View, StyleSheet, Text } from "react-native"
+import { ListItem, Icon, Input, Button, Divider } from "react-native-elements"
+import { Context as AppContext } from "../../context/appContext"
+
+import Colors from "../../constants/Colors"
+import AtomusText from "../../components/Text"
 
 class Student_Drawer extends Component {
     constructor(props) {
@@ -12,7 +14,7 @@ class Student_Drawer extends Component {
 
     UNSAFE_componentWillMount() {
         let { state } = this.context;
-        this.setState({ user: state.user, credentials: state.credentials, courses: state.courses});
+        this.setState({ user: state.user, credentials: state.credentials, courses: state.courses });
     }
 
     _signOut = async () => {
@@ -22,87 +24,67 @@ class Student_Drawer extends Component {
 
     _displayCourses = () => {
         var courses = this.state.courses;
-        if (courses == null || courses.length == 0 || false) {
+        if (courses == null || courses.length == 0) {
             return (
                 <ListItem containerStyle={styles.listItem}>
-                    <ListItem.Title> No Enrolled Courses </ListItem.Title>
+                    <ListItem.Title> <AtomusText text={"No Enrolled Classes"} color={"#242424"} /> </ListItem.Title>
                 </ListItem>
             )
         } else {
             const course_list = courses.map((course, index) => {
                 return (
-                    <ListItem key={index} containerStyle={styles.listItem} bottomDivider onPress={() => { this.props.navigation.navigate('Class', { course: course }); }}>
+                    <ListItem key={index} containerStyle={styles.listItem} bottomDivider onPress={() => { this.props.navigation.navigate("Class", { course: course }); }}>
                         <ListItem.Content>
-                            <ListItem.Title>{course.name} </ListItem.Title>
+                            <ListItem.Title><AtomusText text={course.name} color={"#242424"} /> </ListItem.Title>
                         </ListItem.Content>
-                        <ListItem.Chevron color="#2E2F2F" />
+                        <ListItem.Chevron color="#242424" />
                     </ListItem>)
             })
+            //course_list.unshift(<AtomusText text={"Courses"} fontFamily={"NunitoSans_Bold"} fontSize={18} style={styles.list_header}/>)
             return course_list;
         }
     }
-
-
-
     render() {
         return (
-            <SafeAreaView style={styles.background}>
-                <View style={styles.header}>
-                    <Text style={styles.headerText}>{this.state.user.display_name} </Text>
-                </View>
+            <SafeAreaView style={styles.container}>
+                <AtomusText text={this.state.user.display_name} fontFamily={"NunitoSans_Bold"} fontSize={20} style={styles.header} />
+                <Divider />
                 <View style={styles.list}>{this._displayCourses()}</View>
-                <View style={[styles.bottomCentered, styles.signoutContainer]}>
-                    <Text style={styles.mediumText} onPress={this._signOut}> Sign Out </Text>
-                </View>
+                <AtomusText text={"Sign Out"} fontFamily={"NunitoSans_Bold"} style={styles.signout} onPress={this._signOut} />
             </SafeAreaView>
         );
     };
 }
-Student_Drawer.contextType = AppContext;
 
 const styles = StyleSheet.create({
-    background: {
+    container: {
         flex: 1,
-        justifyContent: 'space-between',
-        alignContent: 'center',
-        backgroundColor: Colors.beige.six4,
+        backgroundColor: Colors.beige.opaque,
     },
     list: {
         flex: 8,
     },
+    list_header: {
+        paddingLeft: 12
+    },
     listItem: {
-        backgroundColor: Colors.beige.color,
+        backgroundColor: Colors.beige.opaque,
     },
     header: {
         paddingLeft: 12,
         paddingVertical: 20
     },
-    headerText: {
-        fontSize: 20,
-        fontWeight: "bold",
-        color: Colors.grey.color
-    },
-    mediumText: {
-        textAlign: "center",
-        fontSize: 16,
-        fontWeight: "bold",
-        color: Colors.grey.color
-    },
-    regularText:{
-        textAlign: "center",
-        fontSize: 14,
-        color: Colors.grey.color
-    },
-    bottomCentered:{
+    signout: {
         position: "absolute",
         bottom: 0,
         marginLeft: "auto",
         marginRight: "auto",
         left: 0,
-        right: 0,    
-    },
-    signoutContainer: {
+        right: 0,
+        textAlign: "center",
         paddingBottom: 20,
     },
 });
+
+Student_Drawer.contextType = AppContext;
 export default Student_Drawer;

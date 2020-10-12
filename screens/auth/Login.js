@@ -39,7 +39,7 @@ class Login extends Component {
                     source={require('../../assets/images/splash_transparent.png')}
                 />
                 <AtomusText text={"Login"} fontSize={40} style={styles.title} />
-                <AtomusButton backgroundColor={Colors.turquoise.opaque} style={styles.button} title={"Login"} onPress={() => this.handleLogin()} />
+                <AtomusButton backgroundColor={Colors.soft_pink.opaque} style={styles.button} title={"Login"} onPress={() => this.handleLogin()} />
             </View>
         );
     }

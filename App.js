@@ -7,7 +7,7 @@ import * as Font from 'expo-font';
 import * as firebase from 'firebase';
 import { firebaseConfig } from './config';
 
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig)
 
 export default class App extends Component {
     constructor(props) {
@@ -15,6 +15,7 @@ export default class App extends Component {
         this.state = {
             fontLoaded: false
         }
+        
     }
 
     async componentDidMount() {

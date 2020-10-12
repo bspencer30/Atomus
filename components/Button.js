@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 import { StyleSheet, TouchableOpacity, View, Text } from "react-native"
-import { Button } from 'react-native-elements';
-import PropTypes from "prop-types";
+import { Button } from 'react-native-elements'
+import PropTypes from "prop-types"
+
 import Colors from "../constants/Colors"
+import AtomusText from "./Text"
 
 export default class AtomusButton extends Component {
     constructor(props) {
@@ -17,7 +19,7 @@ export default class AtomusButton extends Component {
         return (
             <View style={[styles.container, this.props.style]}>
                 <TouchableOpacity onPress={this.onPress} style={[styles.defaultButton, {backgroundColor: this.props.backgroundColor}]}>
-                    <Text style={styles.defaultText}>{this.props.title}</Text>
+                    <AtomusText text={this.props.title} style={styles.defaultText}/>
                 </TouchableOpacity>
             </View>
         );
@@ -35,8 +37,6 @@ const styles = StyleSheet.create({
     },
     defaultText:{
         fontSize: 18,
-        fontFamily: "NunitoSans",
-        color: '#000000'
     }
 })
 

@@ -21,9 +21,9 @@ class Student_Course extends Component {
     });
 
     _displayCourseWork = () => {
-        var course_work = this.course.work;
-        const work_list = course_work.map((work, index) => {
-            return (<AtomusCard key={work.course_work_id} title={work.title} description={work.description} due_date={work.due_date} onPress={() => this.props.navigation.navigate("Coursework")}/>);
+        var coursework = this.course.work;
+        const work_list = coursework.map((work, index) => {
+            return (<AtomusCard key={work.coursework_id} title={work.title} description={work.description} due_date={work.due_date} onPress={() => this.props.navigation.navigate("Coursework")}/>);
         });
         return work_list;
     }

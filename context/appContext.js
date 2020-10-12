@@ -1,7 +1,7 @@
 import createDataContext from './createDataContext';
 import User from '../backend/models/User'
 import Course from '../backend/models/Course'
-import CourseWork from '../backend/models/CourseWork'
+import Coursework from '../backend/models/Coursework'
 
 import userService from '../backend/services/userService'
 import courseService from '../backend/services/courseService'
@@ -47,25 +47,25 @@ const getCourses = (dispatch) => {
         var courses = [];
         var course_data = await courseService.getCourses(access_token);
         await Promise.all(course_data.map(async (course) => {
-            var course_work = await _getCourseWork(access_token, course.id);
-            courses.push(new Course(course.id, course.name, course_work));
+            var coursework = await _getCoursework(access_token, course.id);
+            courses.push(new Course(course.id, course.name, coursework));
         }));
         console.log('Adding ' + courses.length + ' courses to appContext.');
         dispatch({ type: "add_courses", courses: courses });
     }
 }
 
-const _getCourseWork = async (access_token, course_id) => {
-    var course_work = [];
-    var work_data = await courseService.getCourseWork(access_token, course_id);
+const _getCoursework = async (access_token, course_id) => {
+    var coursework = [];
+    var work_data = await courseService.getCoursework(access_token, course_id);
     work_data.forEach(work => {
         var date = new Date();
         if (typeof work.dueDate != "undefined") { date.setFullYear(work.dueDate.year, (work.dueDate.month - 1), work.dueDate.day) }
         if (typeof work.dueTime != "undefined") { date.setHours(work.dueTime.hours, work.dueTime.minutes) }
         if (typeof work.description == "undefined") { work.description = "No Description" }
-        course_work.push(new CourseWork(work.id, work.description, date, work.title));
+        coursework.push(new Coursework(work.id, work.description, date, work.title));
     })
-    return course_work;
+    return coursework;
 }
 
 export const { Provider, Context } = createDataContext(

@@ -15,7 +15,7 @@ exports.getCourses= async (access_token) => {
     return courses;
 }
 
-exports.getCourseWork = async (access_token, course_id) => {
+exports.getCoursework = async (access_token, course_id) => {
     const request = {
         method: "GET",
         headers: new Headers({
@@ -23,10 +23,10 @@ exports.getCourseWork = async (access_token, course_id) => {
         }),
     }
     const url = urlbase + "/courses/" + course_id + "/courseWork?courseWorkStates=PUBLISHED";
-    var courseWork = await fetch(url, request).then((response) => response.json()).then((responseJson) => {
+    var coursework = await fetch(url, request).then((response) => response.json()).then((responseJson) => {
         return responseJson.courseWork;
     })
-    if (typeof courseWork == "undefined" || courseWork == null) courseWork = [];
-    console.log('Returning ' + courseWork.length + ' assignments')  
-    return courseWork;
+    if (typeof coursework == "undefined" || coursework == null) coursework = [];
+    console.log('Returning ' + coursework.length + ' assignments')  
+    return coursework;
 }

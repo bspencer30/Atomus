@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Card , Icon} from "react-native-elements"
+import { Card, Icon } from "react-native-elements"
 import { Context as AppContext } from "../../context/appContext";
 
 import Colors from "../../constants/Colors";
@@ -12,9 +12,9 @@ class Student_Home extends Component {
         this.state = {}
     }
 
-    static navigationOptions = ({navigation}) => ({
-        headerTitle: () => <AtomusText fontSize={25} text={"Upcoming Assignments"}/>,
-      });
+    static navigationOptions = ({ navigation }) => ({
+        headerTitle: () => <AtomusText fontSize={25} text={"Upcoming Assignments"} />,
+    });
 
     UNSAFE_componentWillMount() {
         let { state } = this.context;
@@ -23,7 +23,7 @@ class Student_Home extends Component {
 
     render() {
         return (
-            <View style={styles.container}>  
+            <View style={styles.container}>
             </View>
         );
     }

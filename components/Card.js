@@ -5,6 +5,7 @@ import { Card, Icon } from "react-native-elements"
 
 import Colors from "../constants/Colors"
 import AtomusText from "./Text"
+import dateCalc from "../utils/dateCalc"
 
 export default class AtomusCard extends Component {
     constructor(props) {
@@ -15,13 +16,31 @@ export default class AtomusCard extends Component {
         this.props.onPress();
     };
 
+    _colorIndicator = (date) => {
+        currentDate = new Date();
+        difference = dateCalc.dateDiffInDays(currentDate, date);
+        if (difference < 3){
+            return Colors.soft_pink.opaque;
+        } else if (difference < 7){
+            return Colors.yellow.opaque;
+        } else {
+            return Colors.turquoise.opaque;
+        }
+    }
+
+    _shortDescription = (description) => {
+        var length = description.length;
+        if (length < 60) return description; 
+        return description.substring(0, 85).trim() + ". . .";
+    }
+
     render() {
         return (
             <TouchableOpacity onPress={this.onPress}>
-                <Card containerStyle={styles.container}>
+                <Card containerStyle={[styles.container, {shadowColor: this._colorIndicator(this.props.due_date)}]}>
                     <AtomusText text={this.props.title} style={styles.titleText} />
                     <AtomusText text={"due " + this.props.due_date.toDateString()} style={styles.dueDateText} />
-                    <AtomusText text={this.props.description} />
+                    <AtomusText text={this._shortDescription(this.props.description)} />
                 </Card>
             </TouchableOpacity>
         );
@@ -31,7 +50,9 @@ export default class AtomusCard extends Component {
 const styles = StyleSheet.create({
     container: {
         borderRadius: 5,
-        backgroundColor: "#f1eee7"
+        backgroundColor: "#f1eee7",
+        shadowRadius: 3,
+        //shadowColor: Colors.turquoise.opaque
     },
     defaultButton: {
         alignItems: "center",

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { StatusBar } from "react-native"
 import Navigator from './navigation';
 import { AppLoading } from 'expo';
 import { Provider as AppProvider } from './context/appContext'
@@ -15,7 +16,6 @@ export default class App extends Component {
         this.state = {
             fontLoaded: false
         }
-        
     }
 
     async componentDidMount() {
@@ -31,7 +31,7 @@ export default class App extends Component {
         if (this.state.fontLoaded) {
             return (
                 <AppProvider>
-                    <Navigator />
+                    <Navigator></Navigator>
                 </AppProvider >
             );
         } else {

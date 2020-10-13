@@ -22,7 +22,7 @@ const RouteConfigs = {
     Class: {
         screen: Student_Course,
           navigationOptions: ({navigation}) => ({
-            //headerTitle: () => <Text testing />,
+            headerTitle: () => <Text testing />,
             headerTransparent: true, 
             headerLeft:() => <HeaderBackButton labelVisible={false} tintColor='#2E2F2F' onPress={()=>{navigation.goBack()}}/>
         })

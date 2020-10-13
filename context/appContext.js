@@ -60,9 +60,9 @@ const _getCoursework = async (access_token, course_id) => {
     var work_data = await courseService.getCoursework(access_token, course_id);
     work_data.forEach(work => {
         var date = new Date();
-        if (typeof work.dueDate != "undefined") { date.setFullYear(work.dueDate.year, (work.dueDate.month - 1), work.dueDate.day) }
+        if (typeof work.dueDate != "undefined") { date.setFullYear(work.dueDate.year, (work.dueDate.month - 1), work.dueDate.day - 1) }
         if (typeof work.dueTime != "undefined") { date.setHours(work.dueTime.hours, work.dueTime.minutes) }
-        if (typeof work.description == "undefined") { work.description = "No Description" }
+        if (typeof work.description == "undefined") { work.description = "" }
         coursework.push(new Coursework(work.id, work.description, date, work.title));
     })
     return coursework;

@@ -6,6 +6,7 @@ import { Icon } from "react-native-elements"
 import Student_CourseworkDetail from "../../screens/student/Coursework"
 import Student_Course from "../../screens/student/Course"
 import Student_Home from "../../screens/student/Home"
+import SubmissionCamera from "../../screens/student/Camera"
 
 const StudentNavConfig = {
     initialRouteName: 'Home',
@@ -34,7 +35,20 @@ const RouteConfigs = {
             headerTransparent: true, 
             headerLeft:() => <HeaderBackButton labelVisible={false} tintColor='#2E2F2F' onPress={()=>{navigation.goBack()}}/>
         })
+    },
+
+    Camera: {
+        screen: SubmissionCamera,
+        navigationOptions: ({navigation}) => ({
+            headerTitle: () => <Text/>,
+            headerTransparent: true, 
+            headerLeft:() => <HeaderBackButton labelVisible={false} tintColor='#2E2F2F' onPress={()=>{navigation.goBack()}}/>
+        })
     }
+
+
+
+
 };
 
 const StudentNav = createStackNavigator(RouteConfigs, StudentNavConfig);

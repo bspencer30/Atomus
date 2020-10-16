@@ -6,13 +6,16 @@ exports.googleLogin = async (user_type) => {
     const result = await Google.logInAsync({
         iosClientId: `1096496022788-ec1pa08baup3pf92vu9creh76hf76v47.apps.googleusercontent.com`,
         androidClientId: `1096496022788-4dnpffmibbebtfl912d0617atlvdj03u.apps.googleusercontent.com`,
-        scopes: ["https://www.googleapis.com/auth/classroom.courses.readonly",
-            "https://www.googleapis.com/auth/classroom.coursework.me"],
+        scopes: [
+            "https://www.googleapis.com/auth/classroom.courses.readonly",
+            "https://www.googleapis.com/auth/classroom.coursework.me",
+            "https://www.googleapis.com/auth/drive.file"],
     });
 
     if (result.type == 'success') {
         const { idToken, accessToken, refreshToken } = result;
         const credentials = firebase.auth.GoogleAuthProvider.credential(idToken, accessToken);
+
         var container = await firebase.auth().signInWithCredential(credentials).then(async (result) => {
             const uid = result.user.uid;
             if (result.additionalUserInfo.isNewUser) {

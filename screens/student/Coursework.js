@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import { Card, Icon } from "react-native-elements"
 import { Context as AppContext } from "../../context/appContext";
+import { Camera } from "expo-camera"
+import * as Permissions from "expo-permissions";
 
 import Colors from "../../constants/Colors";
 import AtomusText from "../../components/Text"
@@ -11,7 +13,8 @@ class Student_CourseworkDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            coursework: null
+            coursework: null,
+            hasCameraPermission: null
         }
         this.coursework = this.props.navigation.getParam("coursework");
         //this.props.navigation.set
@@ -20,6 +23,19 @@ class Student_CourseworkDetail extends Component {
     static navigationOptions = ({ navigation }) => ({
         headerTitle: () => <AtomusText fontSize={20} text={navigation.getParam("coursework").title} />,
     });
+
+    _getPermission = async () => {
+        //Permissions.askAsync(Permissions.CAMERA);
+        const picture = await this.props.navigation.navigate("Camera");
+        console.log(picture);
+
+
+        // const { status } = await Permissions.askAsync(Permissions.CAMERA);
+        // this.setState({hasCameraPermission: status == "granted"});
+        // if (this.hasCameraPermission){
+        //     this.props.navigation.navigate("Camera")
+        // }
+    }
 
 
 
@@ -30,13 +46,13 @@ class Student_CourseworkDetail extends Component {
                 {console.log()}
                 <AtomusText text={"due " + this.coursework.due_date.toDateString()} style={styles.dueDateText} />
                 <View style={styles.descriptionContainer}>
-                    <AtomusText text={"Description"} color={"#4f4f4f"} />
+                    <AtomusText text={"Description"}/>
                     <AtomusText text={this.coursework.description} style={styles.descriptionText} />
                 </View>
                 <View style={styles.button_group}>
-                    <AtomusButton backgroundColor={Colors.soft_pink.opaque} title={"Message Parent"} onPress={() => this.handleRegister("student")} />
-                    <AtomusButton backgroundColor={Colors.yellow.opaque} title={"Ask Teacher for Help"} onPress={() => this.handleRegister("parent")} />
-                    <AtomusButton backgroundColor={Colors.turquoise.opaque} title={"Submit"} onPress={() => this.handleRegister("teacher")} />
+                    <AtomusButton backgroundColor={Colors.soft_pink.opaque} title={"Message Parent"} onPress={() => {}} />
+                    <AtomusButton backgroundColor={Colors.yellow.opaque} title={"Ask Teacher for Help"} onPress={() => {}} />
+                    <AtomusButton backgroundColor={Colors.turquoise.opaque} title={"Submit"} onPress={() => this._getPermission()} />
                 </View>
             </View>
         );

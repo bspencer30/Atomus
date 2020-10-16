@@ -37,7 +37,7 @@ export default class AtomusCard extends Component {
     render() {
         return (
             <TouchableOpacity onPress={this.onPress}>
-                <Card containerStyle={[styles.container, {shadowColor: this._colorIndicator(this.props.due_date)}]}>
+                <Card containerStyle={[styles.container, {shadowColor: this._colorIndicator(this.props.due_date), borderColor: this._colorIndicator(this.props.due_date)}]}>
                     <AtomusText text={this.props.title} style={styles.titleText} />
                     <AtomusText text={"due " + this.props.due_date.toDateString()} style={styles.dueDateText} />
                     <AtomusText text={this._shortDescription(this.props.description)} />
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         backgroundColor: "#f1eee7",
         shadowRadius: 3,
-        //shadowColor: Colors.turquoise.opaque
+        borderWidth: 2,
     },
     defaultButton: {
         alignItems: "center",

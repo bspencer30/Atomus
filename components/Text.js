@@ -12,16 +12,13 @@ export default class AtomusText extends Component {
 
     render() {
         return (
-            <Text style={[{ color: (this.props.style.color == "undefined") ? this.props.color : this.props.style.color, fontFamily: this.props.fontFamily, fontSize: this.props.fontSize }, this.props.style]} onPress={this.props.onPress ? this.onPress: null}>
+            <Text style={[{ color: this.props.color, fontFamily: this.props.fontFamily, fontSize: this.props.fontSize }, this.props.style]} onPress={this.props.onPress ? this.onPress: null}>
                 {this.props.text}
             </Text>);
     }
 }
 
 const styles = StyleSheet.create({
-    defaultStyle: {
-        color: "#000000"
-    },
 })
 
 
@@ -39,6 +36,6 @@ AtomusText.defaultProps = {
     color: "#000000",
     fontSize: 16,
     fontFamily: "NunitoSans",
-    style: styles.defaultStyle,
+    style: {},
     text: "Default Text",
 }

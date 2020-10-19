@@ -21,6 +21,7 @@ class Student_Course extends Component {
         //headerTitle: () => <AtomusText fontSize={25} text={navigation.getParam("course").name} />,
     });
 
+
     _displayCourseWork = () => {
         var coursework = this.course.work;
         coursework.sort((a, b) => ((dateCalc.dateDiffInDays(a.due_date, b.due_date) < 0 ) ? 1 : -1))

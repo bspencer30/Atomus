@@ -24,23 +24,12 @@ class Student_CourseworkDetail extends Component {
         headerTitle: () => <AtomusText fontSize={20} text={navigation.getParam("coursework").title} />,
     });
 
-    _getPermission = async () => {
-        //Permissions.askAsync(Permissions.CAMERA);
-        const picture = await this.props.navigation.navigate("Camera");
-        console.log(picture);
-
-
-        // const { status } = await Permissions.askAsync(Permissions.CAMERA);
-        // this.setState({hasCameraPermission: status == "granted"});
-        // if (this.hasCameraPermission){
-        //     this.props.navigation.navigate("Camera")
-        // }
+    async componentDidMount() {
+        
     }
-
-
-
-
+ 
     render() {
+        //console.log(this.coursework)
         return (
             <View style={styles.container}>
                 {console.log()}
@@ -52,13 +41,12 @@ class Student_CourseworkDetail extends Component {
                 <View style={styles.button_group}>
                     <AtomusButton backgroundColor={Colors.soft_pink.opaque} title={"Message Parent"} onPress={() => {}} />
                     <AtomusButton backgroundColor={Colors.yellow.opaque} title={"Ask Teacher for Help"} onPress={() => {}} />
-                    <AtomusButton backgroundColor={Colors.turquoise.opaque} title={"Submit"} onPress={() => this._getPermission()} />
+                    <AtomusButton backgroundColor={Colors.turquoise.opaque} title={"Submit"} onPress={() => this.props.navigation.navigate("Camera", { coursework: this.coursework })} />
                 </View>
             </View>
         );
     }
 }
-Student_CourseworkDetail.contextType = AppContext;
 
 const styles = StyleSheet.create({
     container: {
@@ -81,4 +69,5 @@ const styles = StyleSheet.create({
     },
 });
 
+Student_CourseworkDetail.contextType = AppContext;
 export default Student_CourseworkDetail;

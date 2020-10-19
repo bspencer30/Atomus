@@ -2,6 +2,7 @@ import createDataContext from './createDataContext';
 import User from '../backend/models/User'
 import Course from '../backend/models/Course'
 import Coursework from '../backend/models/Coursework'
+import Submission from '../backend/models/Submission'
 
 import userService from '../backend/services/userService'
 import courseService from '../backend/services/courseService'
@@ -58,14 +59,40 @@ const getCourses = (dispatch) => {
 const _getCoursework = async (access_token, course_id) => {
     var coursework = [];
     var work_data = await courseService.getCoursework(access_token, course_id);
-    work_data.forEach(work => {
+    await Promise.all(work_data.map(async (work) => {
         var date = new Date();
         if (typeof work.dueDate != "undefined") { date.setFullYear(work.dueDate.year, (work.dueDate.month - 1), work.dueDate.day - 1) }
         if (typeof work.dueTime != "undefined") { date.setHours(work.dueTime.hours, work.dueTime.minutes) }
         if (typeof work.description == "undefined") { work.description = "" }
-        coursework.push(new Coursework(work.id, work.description, date, work.title));
-    })
+
+        var submission = await _getSubmission(access_token, course_id, work.id);
+
+        coursework.push(new Coursework(course_id, work.id, work.description, date, submission, work.title));
+    }))
+
+
+    // work_data.forEach(work => {
+    //     var date = new Date();
+    //     if (typeof work.dueDate != "undefined") { date.setFullYear(work.dueDate.year, (work.dueDate.month - 1), work.dueDate.day - 1) }
+    //     if (typeof work.dueTime != "undefined") { date.setHours(work.dueTime.hours, work.dueTime.minutes) }
+    //     if (typeof work.description == "undefined") { work.description = "" }
+
+    //     //get submission
+    //     coursework.push(new Coursework(course_id, work.id, work.description, date, work.title));
+    // })
     return coursework;
+}
+
+const _getSubmission = async (access_token, course_id, coursework_id) => {
+    var submission = await courseService.getSubmission(access_token, course_id, coursework_id);
+    return (new Submission(submission.courseWorkType, submission.id, submission.state))
+}
+
+const submitWork = (dispatch) => {
+    return async (access_token, course_id, coursework_id, submission_id, drive_obj) => {
+        var result = await courseService.submitWork(access_token, course_id, coursework_id, submission_id, drive_obj);
+        return result
+    }
 }
 
 export const { Provider, Context } = createDataContext(
@@ -73,6 +100,7 @@ export const { Provider, Context } = createDataContext(
     loginUser,
     logoutUser,
     getCourses,
+    submitWork
 },
     {
         user: null,

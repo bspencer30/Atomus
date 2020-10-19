@@ -12,6 +12,11 @@ class Splash extends Component {
         this.navigation = this.props.navigation;
     }
 
+    async componentDidMount() {
+        
+    }
+
+    
     handleRegister = async (user_type) => {
         await this.context.loginUser(user_type);
         if (this.context.state.user) {

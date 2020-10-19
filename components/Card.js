@@ -81,6 +81,6 @@ AtomusCard.propTypes = {
 AtomusCard.defaultProps = {
     description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     due_date: new Date(),
-    onPress: () => {console.log("testing");},
+    onPress: () => {console.log("Card Pressed");},
     title: 'Assignment 1',
 }

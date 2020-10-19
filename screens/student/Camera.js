@@ -12,8 +12,10 @@ class SubmissionCamera extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hasCameraPermission: null
-        }
+            hasCameraPermission: null,
+            coursework: null
+        }  
+        this.coursework = this.props.navigation.getParam("coursework")
     }
 
     async componentDidMount() {
@@ -22,25 +24,21 @@ class SubmissionCamera extends Component {
     }
 
     _takePicture = async () => {
-        //console.log(this.context.state.credentials.access_token);
-        
-        
-        
         if(this.camera){
             const options = { quality: 1, base64: true };
             const data = await this.camera.takePictureAsync(options);
             
+            console.log(this.coursework)
             //upload picture to google drive
-            driveService.uploadPicture(this.context.state.credentials.access_token, data.base64);
-            
-            
-             //transfer ownership to teacher
-                     
-             
+            var drive_obj = await driveService.uploadPicture(this.context.state.credentials.access_token, data.base64, this.coursework);
+                        
+            //transfer ownership to teacher
+            this.context.submitWork(this.context.state.credentials.access_token, this.coursework.course_id, this.coursework.coursework_id, this.coursework.submission.submission_id, drive_obj)       
+            //console.log(this.context); 
             
             //this.props.navigation.goBack({});
             
-            //console.log(data);
+            //console.log(this.coursework);
         }   
     }
 

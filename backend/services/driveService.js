@@ -1,10 +1,10 @@
-exports.uploadPicture = async(access_token, photo) => {
+exports.uploadPicture = async(access_token, photo, coursework) => {
     const boundary_string = "foo_bar_baz"
 
     const separator = `--${boundary_string}`;
     const ending = `\n${separator}--`;
     
-    var metadata = {name: "Submission TESTING"};
+    var metadata = {name: `${coursework.coursework_id}_1`};
     var mediaType = "image/jpg";
     
     let body = `\n${separator}\n` +
@@ -33,5 +33,6 @@ exports.uploadPicture = async(access_token, photo) => {
     var response = await fetch(url, request).then((response) => response.json()).then((responseJson) => {
         return responseJson;
     })
-    return response.id;
+    console.log("Response from Drive Upload:\n" + response.id + " " + response.name) 
+    return response;
 }

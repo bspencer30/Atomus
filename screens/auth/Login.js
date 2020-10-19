@@ -14,7 +14,7 @@ class Login extends Component {
 
     handleLogin = async () => {
         await this.context.loginUser("NA");
-        console.log(this.context.state.user)
+        //console.log(this.context.state.user)
         if (this.context.state.user) {
             console.log("User logged in.");
             switch (this.context.state.user.user_type) {

@@ -5,7 +5,8 @@ export default {
         semi_transparent: "rgba(233, 228, 216, 0.64)"
     },
     grey:{
-        opaque: "#818282"
+        opaque: "#818282",
+        semi_transparent: "#b3b4b4"
     },
     pink: {
         //#f19db4

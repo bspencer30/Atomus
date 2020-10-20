@@ -40,7 +40,6 @@ class Student_Drawer extends Component {
                         <ListItem.Chevron color="#242424" />
                     </ListItem>)
             })
-            //course_list.unshift(<AtomusText text={"Courses"} fontFamily={"NunitoSans_Bold"} fontSize={18} style={styles.list_header}/>)
             return course_list;
         }
     }
@@ -74,16 +73,12 @@ const styles = StyleSheet.create({
         paddingLeft: 12,
         paddingVertical: 20
     },
-    signout: {
-        position: "absolute",
-        bottom: 0,
-        marginLeft: "auto",
-        marginRight: "auto",
-        left: 0,
-        right: 0,
+    signout : {
+        flexDirection: "column",
+        justifyContent: "flex-end",
         textAlign: "center",
-        paddingBottom: 20,
-    },
+        marginBottom: 20
+    }
 });
 
 Student_Drawer.contextType = AppContext;

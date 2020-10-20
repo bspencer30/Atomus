@@ -38,7 +38,10 @@ export default class AtomusCard extends Component {
         return (
             <TouchableOpacity onPress={this.onPress}>
                 <Card containerStyle={[styles.container, {shadowColor: this._colorIndicator(this.props.due_date), borderColor: this._colorIndicator(this.props.due_date)}]}>
-                    <AtomusText text={this.props.title} style={styles.titleText} />
+                    <View style={{flexDirection: "row", justifyContent: "space-between"}}>
+                        <AtomusText text={this.props.title} style={styles.titleText} />
+                        <AtomusText text={this.props.course} fontSize={14}/>
+                    </View>
                     <AtomusText text={"due " + this.props.due_date.toDateString()} style={styles.dueDateText} />
                     <AtomusText text={this._shortDescription(this.props.description)} />
                 </Card>
@@ -79,8 +82,9 @@ AtomusCard.propTypes = {
 }
 
 AtomusCard.defaultProps = {
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    course: "",
+    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     due_date: new Date(),
     onPress: () => {console.log("Card Pressed");},
-    title: 'Assignment 1',
+    title: "Default Assignment",
 }

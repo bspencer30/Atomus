@@ -18,7 +18,7 @@ export default class AtomusButton extends Component {
     render() {
         return (
             <View style={[styles.container, this.props.style]}>
-                <TouchableOpacity onPress={this.onPress} style={[styles.defaultButton, {backgroundColor: this.props.backgroundColor}]}>
+                <TouchableOpacity onPress={this.props.onPress ? this.onPress : null} style={[styles.defaultButton, {backgroundColor: this.props.backgroundColor}]}>
                     <AtomusText text={this.props.title} style={styles.defaultText}/>
                 </TouchableOpacity>
             </View>
@@ -49,7 +49,7 @@ AtomusButton.propTypes = {
 
 AtomusButton.defaultProps = {
     backgroundColor: Colors.grey.opaque,
-    onPress: () => {},
+    onPress: null,
     style: styles.container,
     title: "Testing",
 }

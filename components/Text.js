@@ -12,7 +12,7 @@ export default class AtomusText extends Component {
 
     render() {
         return (
-            <Text style={[{ color: this.props.color, fontFamily: this.props.fontFamily, fontSize: this.props.fontSize }, this.props.style]} onPress={this.props.onPress ? this.onPress: null}>
+            <Text style={[{ color: this.props.color, fontFamily: this.props.fontFamily, fontSize: this.props.fontSize }, this.props.style]} onPress={this.props.onPress ? this.onPress : null}>
                 {this.props.text}
             </Text>);
     }

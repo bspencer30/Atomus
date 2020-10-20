@@ -6,6 +6,7 @@ import Submission from '../backend/models/Submission'
 
 import userService from '../backend/services/userService'
 import courseService from '../backend/services/courseService'
+import dateCalc from "../utils/dateCalc"
 
 //adapted from 'BalanceMe' @Kory Brantley with permission @Rahul  
 const authReducer = (state, action) => {
@@ -52,6 +53,7 @@ const getCourses = (dispatch) => {
             courses.push(new Course(course.id, course.name, coursework));
         }));
         console.log('Adding ' + courses.length + ' courses to appContext.');
+        courses.sort((a, b) => (a.name.charAt(0) - b.name.charAt(0) > 0) ? 1 : -1)
         dispatch({ type: "add_courses", courses: courses });
     }
 }
@@ -69,17 +71,7 @@ const _getCoursework = async (access_token, course_id) => {
 
         coursework.push(new Coursework(course_id, work.id, work.description, date, submission, work.title));
     }))
-
-
-    // work_data.forEach(work => {
-    //     var date = new Date();
-    //     if (typeof work.dueDate != "undefined") { date.setFullYear(work.dueDate.year, (work.dueDate.month - 1), work.dueDate.day - 1) }
-    //     if (typeof work.dueTime != "undefined") { date.setHours(work.dueTime.hours, work.dueTime.minutes) }
-    //     if (typeof work.description == "undefined") { work.description = "" }
-
-    //     //get submission
-    //     coursework.push(new Coursework(course_id, work.id, work.description, date, work.title));
-    // })
+    coursework.sort((a, b) => ((dateCalc.dateDiffInDays(a.due_date, b.due_date) < 0 ) ? 1 : -1))
     return coursework;
 }
 

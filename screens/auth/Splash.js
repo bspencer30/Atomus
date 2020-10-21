@@ -27,6 +27,7 @@ class Splash extends Component {
                     this.navigation.navigate("Student");
                     break;
                 case "parent":
+                    this.navigation.navigate("Parent");
                     break;
                 case "teacher":
                     break;

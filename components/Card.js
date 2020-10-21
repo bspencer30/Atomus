@@ -30,8 +30,8 @@ export default class AtomusCard extends Component {
 
     _shortDescription = (description) => {
         var length = description.length;
-        if (length < 60) return description; 
-        return description.substring(0, 85).trim() + ". . .";
+        if (length < 60) return description;    
+        return description.substring(0, description.indexOf(" ", 85)).trim() + ". . .";
     }
 
     render() {

@@ -31,7 +31,7 @@ const loginUser = (dispatch) => {
         } else if (user_con.status == "user_needs_type") {
             dispatch({ type: "login_error", login_err_msg: { "message": user_con.message, "status": user_con.status } })
         } else {
-            var user = new User(user_con.user.display_name, user_con.user.email, user_con.user.uid, user_con.user.user_type);
+            var user = new User(user_con.user.display_name, user_con.user.email, user_con.user.uid, user_con.user.user_type, user_con.user.children);
             dispatch({ type: "login_user", user: user, credentials: user_con.credentials })
         }
     }

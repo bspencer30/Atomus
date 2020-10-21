@@ -5,10 +5,12 @@ module.exports = class User {
        email,
        uid,
        user_type,
+       children
     ) {
         this.display_name = display_name;
         this.email = email;
         this.uid = uid;
         this.user_type = user_type;
+        this.children = children;
     }
 }

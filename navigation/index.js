@@ -1,10 +1,11 @@
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
-import AuthNavigator from './auth-navigator';
-import StudentDrawer from './student/drawer-student';
+import AuthNavigator from "./auth-navigator";
+import StudentDrawer from "./student/drawer-student";
+import ParentNavigator from "./parent/parent-navigator";
 
 const RootNavConfig = {
-    initialRouteName: 'Auth'
+    initialRouteName: "Auth"
 }
 const RouteConfig = {
     Auth: {
@@ -12,6 +13,9 @@ const RouteConfig = {
     },
     Student: {
         screen: StudentDrawer,
+    },
+    Parent: {
+        screen: ParentNavigator
     }
 }
 

@@ -76,9 +76,9 @@ const styles = StyleSheet.create({
         margin: 16
     },
     button_group: {
+        marginTop: 200,
         justifyContent: "space-between",
         height: 150,
-        top: "40%"
     },
 });
 

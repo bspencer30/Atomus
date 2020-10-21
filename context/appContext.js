@@ -17,6 +17,8 @@ const authReducer = (state, action) => {
             return { ...state, user: action.user, credentials: action.credentials }
         case "add_courses":
             return { ...state, courses: action.courses }
+        case "add_child":
+            return { ...state, user: action.user }
         case "login_error":
             return { ...state, login_err_msg: action.login_err_msg }
         default:
@@ -87,12 +89,21 @@ const submitWork = (dispatch) => {
     }
 }
 
+const addChild = (dispatch) => {
+    return async (user, new_child) => {
+        var new_children = await userService.addChild(user.uid, user.children, new_child);
+        user.children = new_children;
+        dispatch({type: "add_child", user: user});
+    }
+}
+
 export const { Provider, Context } = createDataContext(
     authReducer, {
     loginUser,
     logoutUser,
     getCourses,
-    submitWork
+    submitWork,
+    addChild
 },
     {
         user: null,

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { StyleSheet, ScrollView, Text, View } from "react-native";
+import { StyleSheet, ScrollView, View } from "react-native";
 import { Icon } from "react-native-elements"
 import { Context as AppContext } from "../../context/appContext";
 
 import Colors from "../../constants/Colors";
 import AtomusText from "../../components/Text"
-import AtomusCard from "../../components/Card"
-import dateCalc from "../../utils/dateCalc"
+import AtomusCard_Child from "../../components/Card_Child"
 import AtomusButton from "../../components/Button";
 
 class Parent_Home extends Component {
@@ -19,17 +18,29 @@ class Parent_Home extends Component {
         headerRight: () => <Icon name="add" style={{ marginRight: 16 }} onPress={() => navigation.navigate("AddChild")} />
     });
 
+
+    _displayChildren = () => {
+        const { children } = this.context.state.user;
+        const child_list = [];
+        
+        for (const key in children) {
+            const child = children[key]
+            child_list.push(<AtomusCard_Child key={key} name={child.name} email={child.email} />)
+        }
+        return child_list;
+    }
+
     render() {
-        if (this.context.state.user.children.length == 0) {
+        if (!this.context.state.user.children[0]) {
             return (
-                <View style={styles.container}>
-                    <AtomusButton backgroundColor={Colors.turquoise.opaque} title={"No Children, Add Some"} style={{marginTop: 70}} onPress={() => this.props.navigation.navigate("AddChild")} />
+                <View style={[styles.container, { alignItems: "center" }]}>
+                    <AtomusButton backgroundColor={Colors.turquoise.opaque} title={"No Children, Add Some"} style={{ marginTop: 70 }} onPress={() => this.props.navigation.navigate("AddChild")} />
                 </View>
             )
         } else {
             return (
                 <View style={styles.container}>
-                    <ScrollView />
+                    <ScrollView contentContainerStyle={styles.list}>{this._displayChildren()}</ScrollView>
                 </View>
             );
         }
@@ -40,7 +51,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Colors.beige.opaque,
-        alignItems: "center"
     },
     addChildButton: {
         backgroundColor: Colors.turquoise.opaque,
@@ -48,12 +58,9 @@ const styles = StyleSheet.create({
         padding: 15,
         marginTop: 100,
         marginHorizontal: 16,
-        alignItems: "center"
     },
-
-
     list: {
-        paddingTop: 24,
+        paddingTop: 50,
         paddingBottom: 50,
     },
     courseName: {

@@ -2,7 +2,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
 import AuthNavigator from "./auth-navigator";
 import StudentDrawer from "./student/drawer-student";
-import ParentNavigator from "./parent/parent-navigator";
+import ParentDrawer from "./parent/drawer-parent";
 
 const RootNavConfig = {
     initialRouteName: "Auth"
@@ -15,7 +15,7 @@ const RouteConfig = {
         screen: StudentDrawer,
     },
     Parent: {
-        screen: ParentNavigator
+        screen: ParentDrawer
     }
 }
 

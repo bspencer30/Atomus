@@ -11,22 +11,38 @@ import AtomusButton from "../../components/Button"
 class Parent_AddChild extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            child_name: "",
+            child_email: "",
+            user: null
+        }
     }
     static navigationOptions = ({ navigation }) => ({
         headerTitle: () => <AtomusText fontSize={20} text={"Add Child"} />,
     });
 
+    componentDidMount() {
+        const { user } = this.context.state;
+        this.setState({user: user})
+    }
+
+    _addChild = async () => {
+        //TODO input checking
+        const { user } = this.state; 
+        const { child_name, child_email } = this.state;
+        await this.context.addChild(user, {name: child_name, email: child_email });  
+        this.props.navigation.goBack();
+    }
+
     render() {
-        console.log(this.context.state.user);
         return (
             <View style={styles.container}>
                 <View style={styles.box}>
                     <AtomusText text={"Child's Name"} fontSize={14} />
-                    <TextInput style={styles.input} defaultValue={"Griffin"} />
+                    <TextInput style={styles.input} placeholder="Griffin" onChangeText={(text) => this.setState({child_name: text})}/>
                     <AtomusText text={"Email Address"} fontSize={14}/>
-                    <TextInput style={styles.input} defaultValue={"example@mail.com"} />
-                    <AtomusButton title={"Add Child"} backgroundColor={Colors.turquoise.opaque}style={{alignItems: "center"}}/>
+                    <TextInput style={styles.input} placeholder="example@mail.com" onChangeText={(text) => this.setState({child_email: text})}/>
+                    <AtomusButton title={"Add Child"} backgroundColor={Colors.turquoise.opaque} style={{alignItems: "center"}} onPress={() => this._addChild()}/>
                 </View>
             </View>
         );

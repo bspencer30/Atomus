@@ -21,7 +21,7 @@ const RouteConfigs = {
         screen: Parent_AddChild,
         navigationOptions: ({navigation}) => ({
             //headerTitle: () => <Text/>,
-            headerLeft: () => <HeaderBackButton labelVisible={false} tintColor='#2E2F2F' onPress={()=>{navigation.goBack()}}/>,
+            headerLeft: () => <HeaderBackButton labelVisible={false} tintColor="#2E2F2F" onPress={()=>{navigation.goBack()}}/>,
             headerTransparent: true, 
         })
     }

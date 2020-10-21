@@ -67,7 +67,7 @@ const _getUserDoc = async (uid) => {
             user_type: data.user_type,
             uid: uid
         };
-        if (data.user_type == "parent") user.children = (("children" in data) ? data.children : [])
+        if (data.user_type == "parent") user.children = (("children" in data) ? data.children : {})
         return user;
     });
     return user;
@@ -81,4 +81,11 @@ exports.googleLogout = async (access_token) => {
         accessToken: access_token
     });
     return result
+}
+
+exports.addChild = async (uid, children, new_child) => {
+    const child_count = Object.keys(children).length;
+    children[child_count] = new_child
+    firebase.database().ref("users/" + uid).update({children})
+    return children;
 }

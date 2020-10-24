@@ -52,7 +52,7 @@ const getCourses = (dispatch) => {
         var course_data = await courseService.getCourses(access_token);
         await Promise.all(course_data.map(async (course) => {
             var coursework = await _getCoursework(access_token, course.id);
-            courses.push(new Course(course.id, course.name, coursework));
+            courses.push(new Course(course.id, course.guardiansEnabled, course.name, coursework));
         }));
         console.log('Adding ' + courses.length + ' courses to appContext.');
         courses.sort((a, b) => (a.name.charAt(0) - b.name.charAt(0) > 0) ? 1 : -1)

@@ -33,20 +33,40 @@ class Student_Drawer extends Component {
         } else {
             const course_list = courses.map((course, index) => {
                 return (
-                    <ListItem key={index} containerStyle={styles.listItem} bottomDivider onPress={() => { this.props.navigation.navigate("Class", { course: course }); }}>
+                    <ListItem key={index} containerStyle={styles.listItem} onPress={() => { this.props.navigation.navigate("Class", { course: course }); }}>
                         <ListItem.Content>
-                            <ListItem.Title><AtomusText text={course.name} color={"#242424"} /> </ListItem.Title>
+                            <ListItem.Title><AtomusText text={course.name} style={{ marginLeft: 12 }} color={"#242424"} /> </ListItem.Title>
                         </ListItem.Content>
                         <ListItem.Chevron color="#242424" />
                     </ListItem>)
             })
+
+            course_list.unshift(
+                <AtomusText key={-1} text={"Courses"} fontFamily={"NunitoSans_Bold"} fontSize={18} style={styles.list_header} />
+            )
+
+
             return course_list;
         }
     }
+
+    _manageGuardians = () => {
+        return (
+            <ListItem containerStyle={styles.listItem} onPress={() => { this.props.navigation.navigate("GuardianList"); }}>
+                <ListItem.Content>
+                    <ListItem.Title><AtomusText text={"Manage Guardians"} style={{ textAlign: "center" }} /> </ListItem.Title>
+                </ListItem.Content>
+            </ListItem>
+        );
+    }
+
+
     render() {
         return (
             <SafeAreaView style={styles.container}>
                 <AtomusText text={this.state.user.display_name} fontFamily={"NunitoSans_Bold"} fontSize={20} style={styles.header} />
+                <Divider />
+                {this._manageGuardians()}
                 <Divider />
                 <View style={styles.list}>{this._displayCourses()}</View>
                 <AtomusText text={"Sign Out"} fontFamily={"NunitoSans_Bold"} style={styles.signout} onPress={this._signOut} />
@@ -61,10 +81,12 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.beige.opaque,
     },
     list: {
-        flex: 8,
+        flex: 1,
+        marginTop: 50
     },
     list_header: {
-        paddingLeft: 12
+        padding: 14,
+        //textAlign: "center"
     },
     listItem: {
         backgroundColor: Colors.beige.opaque,
@@ -73,7 +95,7 @@ const styles = StyleSheet.create({
         paddingLeft: 12,
         paddingVertical: 20
     },
-    signout : {
+    signout: {
         flexDirection: "column",
         justifyContent: "flex-end",
         textAlign: "center",

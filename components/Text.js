@@ -33,7 +33,7 @@ AtomusText.propTypes = {
 
 AtomusText.defaultProps = {
     onPress: null,
-    color: "#000000",
+    color: "#242424",
     fontSize: 16,
     fontFamily: "NunitoSans",
     style: {},

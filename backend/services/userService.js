@@ -9,7 +9,8 @@ exports.googleLogin = async (user_type) => {
         scopes: [
             "https://www.googleapis.com/auth/classroom.courses.readonly",
             "https://www.googleapis.com/auth/classroom.coursework.me",
-            "https://www.googleapis.com/auth/drive.file"],
+            "https://www.googleapis.com/auth/drive.file",
+            "https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly"],
     });
 
     if (result.type == 'success') {

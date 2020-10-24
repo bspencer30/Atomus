@@ -5,6 +5,8 @@ import { Icon } from "react-native-elements"
 
 import Student_CourseworkDetail from "../../screens/student/Coursework"
 import Student_Course from "../../screens/student/Course"
+import Student_GuardianList from "../../screens/student/GuardianList"
+import Student_GuardianInvite from "../../screens/student/GuardianInvite"
 import Student_Home from "../../screens/student/Home"
 import SubmissionCamera from "../../screens/student/Camera"
 
@@ -19,8 +21,7 @@ const RouteConfigs = {
             headerTransparent: true, 
             headerLeft:() => <Icon style={{paddingLeft:10}}color ='#2E2F2F' name="menu" onPress={()=>{navigation.openDrawer()}}/>
         })
-    },
-    
+    },    
     Class: {
         screen: Student_Course,
           navigationOptions: ({navigation}) => ({
@@ -38,6 +39,24 @@ const RouteConfigs = {
         })
     },
 
+    GuardianList: {
+        screen: Student_GuardianList,
+        navigationOptions: ({navigation}) => ({
+            //headerTitle: () => <Text testing />,
+            headerTransparent: true, 
+            headerLeft:() => <HeaderBackButton labelVisible={false} tintColor='#2E2F2F' onPress={()=>{navigation.goBack()}}/>
+        })
+    },
+
+    GuardianInvite: {
+        screen: Student_GuardianInvite,
+        navigationOptions: ({navigation}) => ({
+            //headerTitle: () => <Text testing />,
+            headerTransparent: true, 
+            headerLeft:() => <HeaderBackButton labelVisible={false} tintColor='#2E2F2F' onPress={()=>{navigation.goBack()}}/>
+        })
+    },
+
     Camera: {
         screen: SubmissionCamera,
         navigationOptions: ({navigation}) => ({
@@ -46,9 +65,6 @@ const RouteConfigs = {
             headerLeft:() => <HeaderBackButton labelVisible={false} tintColor='#2E2F2F' onPress={()=>{navigation.goBack()}}/>
         })
     }
-
-
-
 
 };
 

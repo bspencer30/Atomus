@@ -87,3 +87,7 @@ exports.submitWork = async (access_token, course_id, coursework_id, submission_i
 
 
 }
+
+exports.getChildCourses = async (access_token) => {
+    
+}

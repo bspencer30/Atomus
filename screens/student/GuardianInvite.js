@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import { Alert, StyleSheet, ScrollView, Text, TextInput, View } from "react-native";
-import { ListItem, CheckBox, Card, Icon } from "react-native-elements"
+import { Alert, StyleSheet, ScrollView, TextInput, View } from "react-native";
+import { ListItem } from "react-native-elements"
 import { Context as AppContext } from "../../context/appContext";
 
 import Colors from "../../constants/Colors";
 import AtomusText from "../../components/Text"
-import AtomusCard from "../../components/Card"
-import dateCalc from "../../utils/dateCalc"
 import AtomusButton from "../../components/Button";
 
 class Student_GuardianInvite extends Component {
@@ -14,7 +12,6 @@ class Student_GuardianInvite extends Component {
         super(props);
         this.state = {
             guardian_email: "",
-            checked_courses: {},
         }
     }
 
@@ -27,25 +24,8 @@ class Student_GuardianInvite extends Component {
         headerTitle: () => <AtomusText fontSize={20} text={"Invite Guardian"} />,
     });
 
-
-    _inArray = (course_id, array) => {
-        for (var i = 0; i < array.length; i++) {
-            if (array[i] == course_id) return true;
-        }
-        return false;
-    }
-
-    //I recognize this could be improved with a set but the "has" method was throwing an error
-    _toggleCourse = (course) => {
-        if (!course.guardians_enabled) {
-            Alert.alert("Guardians not enabled", "Contact Teacher.")
-        } else {
-            const course_id = course.course_id;
-            const checked_list = Object.keys(this.state.checked_courses)
-            const obj = this.state.checked_courses;
-            this._inArray(course_id, checked_list) ? delete obj[course_id] : obj[course_id] = true;
-            this.setState({ checked_courses: obj });
-        }
+    _courseAlert = (course) => {
+        if (!course.guardians_enabled) Alert.alert("Contact Teacher", `Guardians not enabled within ${course.name}.\n Your guardian will not be able to see your work in this course.`);
     }
 
     _displayCourses = () => {
@@ -59,29 +39,34 @@ class Student_GuardianInvite extends Component {
         } else {
             const course_list = courses.map((course, index) => {
                 return (
-                    <ListItem key={index} containerStyle={styles.listItem} >
+                    <ListItem key={index} containerStyle={styles.listItem} onPress={() => this._courseAlert(course)} >
                         <ListItem.Content>
                             <ListItem.Title><AtomusText text={course.name} fontSize={15} style={{ marginLeft: 12 }} /> </ListItem.Title>
-                            {/* <ListItem.Subtitle><AtomusText text={course.guardians_enabled ? "" : " testing"} fontSize={12}/></ListItem.Subtitle> */}
                         </ListItem.Content>
-                        <ListItem.CheckBox onPress={() => this._toggleCourse(course)} checkedColor={Colors.turquoise.opaque} checked={this._inArray(course.course_id, Object.keys(this.state.checked_courses))} />
-                    </ListItem>)
+                        <ListItem.CheckBox onPress={() => this._courseAlert(course)} checkedColor={Colors.turquoise.opaque} checked={course.guardians_enabled} uncheckedIcon={course.guardians_enabled ? "check-square-o" : "warning"} />
+                    </ListItem>
+                )
             })
             return course_list;
         }
+    }
+
+    _handleInvite = async () => {
+        await this.context.inviteGuardian(this.context.state.credentials.access_token, this.state.guardian_email);
+        this.props.navigation.goBack();
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <AtomusText text={"Guardian Email Address"} style={{ marginTop: "15%" }} />
-                <TextInput style={styles.input} placeholder="example@mail.com" onChangeText={(text) => this.setState({ guardian_email: text })} />
+                <TextInput style={styles.input} placeholder="example@mail.com" autoCompleteType="email" returnKeyType="done" onChangeText={(text) => this.setState({ guardian_email: text })} />
                 <AtomusText text={"Courses"} />
                 <ScrollView style={styles.list}>
                     {this._displayCourses()}
                 </ScrollView>
                 <View style={{ flex: 1000 }} />
-                <AtomusButton style={styles.inviteButton} title={"Send Invitation"} backgroundColor={Colors.turquoise.opaque} />
+                <AtomusButton style={styles.inviteButton} title={"Send Invitation"} backgroundColor={Colors.turquoise.opaque} onPress={() => this._handleInvite()} />
             </View>
         );
     }
@@ -96,7 +81,7 @@ const styles = StyleSheet.create({
     list: {
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: "#cdc2a7",
+        borderColor: Colors.beige.dark,
     },
     listItem: {
         backgroundColor: Colors.beige.semi_transparent,
@@ -108,7 +93,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.beige.semi_transparent,
         borderRadius: 5,
         padding: 15,
-        borderColor: "#cdc2a7",
+        borderColor: Colors.beige.dark,
         borderWidth: 1,
         fontFamily: "NunitoSans",
         marginBottom: 20,

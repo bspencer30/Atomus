@@ -2,7 +2,8 @@ export default {
     beige:{
         //#e9e4d8
         opaque: "rgba(233, 228, 216, 1)",
-        semi_transparent: "#f1eee7"
+        semi_transparent: "#f1eee7",
+        dark: "#cdc2a7"
     },
     grey:{
         opaque: "#818282",

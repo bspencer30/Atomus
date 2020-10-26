@@ -43,7 +43,7 @@ exports.getSubmission = async (access_token, course_id, coursework_id) => {
     var submission = await fetch(url, request).then((response) => response.json()).then((responseJson) => {
         return responseJson.studentSubmissions;
     })
-    submission = submission[0]
+    if (typeof submission != "undefined") submission = submission[0];
     return submission;
 }
 

@@ -12,7 +12,7 @@ class Login extends Component {
         this.navigation = this.props.navigation;
     }
 
-    handleLogin = async () => {
+    _handleLogin = async () => {
         await this.context.loginUser("NA");
         //console.log(this.context.state.user)
         if (this.context.state.user) {
@@ -39,7 +39,7 @@ class Login extends Component {
                     source={require('../../assets/images/splash_transparent.png')}
                 />
                 <AtomusText text={"Login"} fontSize={40} style={styles.title} />
-                <AtomusButton backgroundColor={Colors.soft_pink.opaque} style={styles.button} title={"Login"} onPress={() => this.handleLogin()} />
+                <AtomusButton backgroundColor={Colors.soft_pink.opaque} style={styles.button} title={"Login"} onPress={() => this._handleLogin()} />
             </View>
         );
     }

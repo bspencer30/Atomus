@@ -17,13 +17,14 @@ class Splash extends Component {
     }
 
     
-    handleRegister = async (user_type) => {
+    _handleRegister = async (user_type) => {
         await this.context.loginUser(user_type);
         if (this.context.state.user) {
             console.log("User logged in.")
             switch (this.context.state.user.user_type) {
                 case "student":
                     await this.context.getCourses(this.context.state.credentials.access_token);
+                    //await this.context.getGuardians(this.context.state.crendentials.access_token);
                     this.navigation.navigate("Student");
                     break;
                 case "parent":
@@ -45,9 +46,9 @@ class Splash extends Component {
                 />
                 <AtomusText text={"Atomus"} fontSize={40} style={styles.title} />
                 <View style={styles.button_group}>
-                    <AtomusButton backgroundColor={Colors.turquoise.opaque} title={"Student"} onPress={() => this.handleRegister("student")} />
-                    <AtomusButton backgroundColor={Colors.yellow.opaque} title={"Parent"} onPress={() => this.handleRegister("parent")} />
-                    <AtomusButton backgroundColor={Colors.pink.opaque} title={"Teacher"} onPress={() => this.handleRegister("teacher")} />
+                    <AtomusButton backgroundColor={Colors.turquoise.opaque} title={"Student"} onPress={() => this._handleRegister("student")} />
+                    <AtomusButton backgroundColor={Colors.yellow.opaque} title={"Parent"} onPress={() => this._handleRegister("parent")} />
+                    <AtomusButton backgroundColor={Colors.pink.opaque} title={"Teacher"} onPress={() => this._handleRegister("teacher")} />
                     <AtomusText text={"Returning User?"} style={{ textAlign: "right", paddingRight: 8 }} onPress={() => this.navigation.navigate("Login")} />
                 </View>
 

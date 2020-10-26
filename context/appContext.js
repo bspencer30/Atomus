@@ -19,6 +19,10 @@ const authReducer = (state, action) => {
             return { ...state, courses: action.courses }
         case "add_child":
             return { ...state, user: action.user }
+        case "add_guardians":
+            return { ...state, guardians: action.guardians}
+        case "add_guardian_invitations":
+            return { ...state, invitations: action.invitations}
         case "login_error":
             return { ...state, login_err_msg: action.login_err_msg }
         default:
@@ -33,7 +37,7 @@ const loginUser = (dispatch) => {
         } else if (user_con.status == "user_needs_type") {
             dispatch({ type: "login_error", login_err_msg: { "message": user_con.message, "status": user_con.status } })
         } else {
-            var user = new User(user_con.user.display_name, user_con.user.email, user_con.user.uid, user_con.user.user_type, user_con.user.children);
+            var user = new User(user_con.user.display_name, user_con.user.email, user_con.user.uid, user_con.user.user_type);      
             dispatch({ type: "login_user", user: user, credentials: user_con.credentials })
         }
     }
@@ -78,8 +82,9 @@ const _getCoursework = async (access_token, course_id) => {
 }
 
 const _getSubmission = async (access_token, course_id, coursework_id) => {
-    var submission = await courseService.getSubmission(access_token, course_id, coursework_id);
-    return (new Submission(submission.courseWorkType, submission.id, submission.state))
+    const submission = await courseService.getSubmission(access_token, course_id, coursework_id);
+    if (typeof submission == "undefined") return (new Submission());
+    else return (new Submission(submission.courseWorkType, submission.id, submission.state));
 }
 
 const submitWork = (dispatch) => {
@@ -89,25 +94,51 @@ const submitWork = (dispatch) => {
     }
 }
 
-const addChild = (dispatch) => {
-    return async (user, new_child) => {
-        var new_children = await userService.addChild(user.uid, user.children, new_child);
-        user.children = new_children;
-        dispatch({type: "add_child", user: user});
+const getGuardians = (dispatch) => {
+    return async (access_token) => {
+        var guardians = await userService.getGuardians(access_token);
+        if (typeof guardians == "undefined") guardians = [];
+        dispatch({ type: "add_guardians", guardians: guardians});
     }
 }
+
+const inviteGuardian = (dispatch) => {
+    return async (access_token, invited_email) => {
+        var guardian = await userService.inviteGuardian(access_token, invited_email);       
+        console.log(guardian);
+    }
+}
+
+const getGuardianInvitations = (dispatch) => {
+    return async (access_token) => {
+        var invitations = await userService.getGuardianInvitations(access_token);
+        if (typeof invitations == "undefined") invitations = [];
+        dispatch({ type: "add_guardian_invitations", invitations: invitations});
+    }
+}
+
+const deleteInvitation = (dispatch) => {
+    return async (access_token, invite_id) => {
+        var guardianInvitation = await userService.deleteInvitation(access_token, invite_id);
+    }
+}
+
 
 export const { Provider, Context } = createDataContext(
     authReducer, {
     loginUser,
     logoutUser,
     getCourses,
-    submitWork,
-    addChild
+    getGuardians,
+    inviteGuardian,
+    getGuardianInvitations,
+    deleteInvitation
 },
     {
         user: null,
         credentials: null,
         courses: null,
+        guardians: null,
+        invitations: null
     }
 )

@@ -1,5 +1,6 @@
 import * as Google from 'expo-google-app-auth';
 import * as firebase from 'firebase';
+const urlbase = 'https://classroom.googleapis.com/v1'
 
 
 exports.googleLogin = async (user_type) => {
@@ -10,7 +11,7 @@ exports.googleLogin = async (user_type) => {
             "https://www.googleapis.com/auth/classroom.courses.readonly",
             "https://www.googleapis.com/auth/classroom.coursework.me",
             "https://www.googleapis.com/auth/drive.file",
-            "https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly"],
+            "https://www.googleapis.com/auth/classroom.guardianlinks.students"],
     });
 
     if (result.type == 'success') {
@@ -68,7 +69,6 @@ const _getUserDoc = async (uid) => {
             user_type: data.user_type,
             uid: uid
         };
-        if (data.user_type == "parent") user.children = (("children" in data) ? data.children : {})
         return user;
     });
     return user;
@@ -84,9 +84,70 @@ exports.googleLogout = async (access_token) => {
     return result
 }
 
-exports.addChild = async (uid, children, new_child) => {
-    const child_count = Object.keys(children).length;
-    children[child_count] = new_child
-    firebase.database().ref("users/" + uid).update({children})
-    return children;
+exports.getGuardians = async (access_token) => {
+    const request = {
+        method: "GET",
+        headers: new Headers({
+            "Authorization": "Bearer " + access_token,
+        }),
+    }
+    const url = urlbase + "/userProfiles/me/guardians"
+    const guardians = await fetch(url, request).then((response) => response.json()).then((responseJson) => {
+        return responseJson.guardians;
+    })
+    return guardians;
+}
+
+exports.inviteGuardian = async (access_token, invited_email) => {
+    const body = {
+        studentId: "me",
+        invitedEmailAddress: invited_email
+    }
+    const request = {
+        method: "POST",
+        headers: new Headers({
+            "Authorization": "Bearer " + access_token,
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        }),
+        body
+    }
+    const url = urlbase + "/userProfiles/me/guardianInvitations"
+    const guardian = await fetch(url, request).then((response) => response.json()).then((responseJson) => {
+        return responseJson;
+    })
+    return guardian;
+}
+
+exports.getGuardianInvitations = async (access_token) => {
+    const request = {
+        method: "GET",
+        headers: new Headers({
+            "Authorization": "Bearer " + access_token,
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        }),
+    }
+    const url = urlbase + "/userProfiles/me/guardianInvitations?states=PENDING"
+    const invitations = await fetch(url, request).then((response) => response.json()).then((responseJson) => {
+        return responseJson.guardianInvitations;
+    })
+    return invitations;
+}
+
+exports.deleteInvitation = async (access_token, invite_id) => {
+    const request = {
+        method: "PATCH",
+        headers: new Headers({
+            "Authorization": "Bearer " + access_token,
+        }), 
+        body: JSON.stringify({
+            "state": "COMPLETE"
+        })
+    }
+    const url = urlbase + "/userProfiles/me/guardianInvitations/" + invite_id + "?updateMask=state"
+    const guardianInvitation = await fetch(url, request).then((response) => response.json()).then((responseJson) => {
+        return responseJson
+    })
+    return guardianInvitation;
 }

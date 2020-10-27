@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, StyleSheet, ScrollView, View } from "react-native";
+import { ActivityIndicator, Alert, StyleSheet, ScrollView, View } from "react-native";
 import { ListItem, Icon } from "react-native-elements"
 import { Context as AppContext } from "../../context/appContext";
 
@@ -12,7 +12,8 @@ class Student_GuardianList extends Component {
         super(props);
         this.state = {
             guardians: [],
-            invitations: []
+            invitations: [],
+            loading : false,
         }
     }
 
@@ -22,12 +23,13 @@ class Student_GuardianList extends Component {
     });
 
     async componentDidMount() {
+        this.setState({ loading: true });
         const access_token = this.context.state.credentials.access_token;
 
         await this.context.getGuardians(access_token);
         await this.context.getGuardianInvitations(access_token);
         let { state } = this.context;
-        this.setState({ guardians: state.guardians, invitations: state.invitations, access_token: access_token });
+        this.setState({ guardians: state.guardians, invitations: state.invitations, access_token: access_token, loading: false });
     }
 
     _displayInvitations = () => {
@@ -102,6 +104,11 @@ class Student_GuardianList extends Component {
     }
 
     render() {
+        if (this.state.loading) {
+            return(<View style={styles.containerLoading}>
+                <ActivityIndicator size="large" color="#8CD4CC" />
+            </View>);
+        }
         return (
             <View style={styles.container}>
                 {this._displayGuardians()}
@@ -117,6 +124,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.beige.opaque,
         padding: 16
+    },
+    containerLoading: {
+        flex: 1,
+        backgroundColor: Colors.beige.opaque,
+        padding: 16, 
+        alignContent:"center",
+        justifyContent: "center",
     },
     list: {
         borderRadius: 5,

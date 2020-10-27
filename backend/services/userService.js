@@ -99,10 +99,6 @@ exports.getGuardians = async (access_token) => {
 }
 
 exports.inviteGuardian = async (access_token, invited_email) => {
-    const body = {
-        studentId: "me",
-        invitedEmailAddress: invited_email
-    }
     const request = {
         method: "POST",
         headers: new Headers({
@@ -110,7 +106,9 @@ exports.inviteGuardian = async (access_token, invited_email) => {
             "Accept": "application/json",
             "Content-Type": "application/json"
         }),
-        body
+        body: JSON.stringify({
+            "invitedEmailAddress": invited_email
+        })
     }
     const url = urlbase + "/userProfiles/me/guardianInvitations"
     const guardian = await fetch(url, request).then((response) => response.json()).then((responseJson) => {

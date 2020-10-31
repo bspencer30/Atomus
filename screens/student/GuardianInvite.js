@@ -52,7 +52,7 @@ class Student_GuardianInvite extends Component {
     }
 
     _handleInvite = async () => {
-        await this.context.inviteGuardian(this.context.state.credentials.access_token, this.state.guardian_email);
+        this.context.inviteGuardian(this.context.state.credentials.access_token, this.state.guardian_email);
         this.props.navigation.goBack();
     }
 

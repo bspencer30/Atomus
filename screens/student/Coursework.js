@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, ScrollView, View } from "react-native";
 import { Context as AppContext } from "../../context/appContext";
 
 import Colors from "../../constants/Colors";
@@ -36,24 +36,30 @@ class Student_CourseworkDetail extends Component {
         return status_obj
     }
 
+    _shortDescription = (description) => {
+        var length = description.length;
+        if (length < 250) return description;    
+        return description.substring(0, description.indexOf(" ", 250)).trim() + ". . .";
+    }
+
     render() {
         const { string, color } = this._status(this.coursework.due_date, this.coursework.submission.submission_state);
         return (
-            <View style={styles.container}>
-                {console.log()}
+            <ScrollView  style={{backgroundColor: Colors.beige.opaque}} contentContainerStyle={styles.container}>
                 <AtomusText text={"due " + this.coursework.due_date.toDateString()} style={styles.dueDateText} />
                 <View style={styles.descriptionContainer}>
                     <AtomusText text={"Description"} />
-                    <AtomusText text={this.coursework.description.trim()} style={styles.descriptionText} />
-                    <View style={{backgroundColor: color, borderRadius: 5, padding: 15, marginTop: 20, alignItems: "center"}}>
+                    <AtomusText text={this._shortDescription(this.coursework.description)} style={styles.descriptionText} />
+                    <View style={[styles.status, {backgroundColor: color}]}>
                         <AtomusText text={string} />
                     </View>
                 </View>
                 <View style={styles.button_group}>
+                    <AtomusButton backgroundColor={Colors.grey.semi_transparent} title={"Submit"} onPress={() => { }} />
                     <AtomusButton backgroundColor={Colors.grey.semi_transparent} title={"Message Parent"} onPress={() => { }} />
                     <AtomusButton backgroundColor={Colors.grey.semi_transparent} title={"Ask Teacher for Help"} onPress={() => { }} />
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }
@@ -72,10 +78,17 @@ const styles = StyleSheet.create({
         top: "10%",
         margin: 16
     },
+    status:{
+        borderRadius: 5, 
+        padding: 15, 
+        marginTop: 20, 
+        alignItems: "center"
+    },
     button_group: {
         marginTop: 200,
         justifyContent: "space-between",
         height: 150,
+        marginBottom: 100
     },
 });
 

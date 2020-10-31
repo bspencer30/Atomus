@@ -13,7 +13,7 @@ class Student_GuardianList extends Component {
         this.state = {
             guardians: [],
             invitations: [],
-            loading : false,
+            loading: false,
         }
     }
 
@@ -23,6 +23,13 @@ class Student_GuardianList extends Component {
     });
 
     async componentDidMount() {
+        this.props.navigation.addListener("didFocus", () => {
+            this._updateList();
+        });
+    }
+
+
+    async _updateList() {
         this.setState({ loading: true });
         const access_token = this.context.state.credentials.access_token;
 
@@ -59,21 +66,18 @@ class Student_GuardianList extends Component {
     }
 
     _deleteInvitiation = async (invite_email, invite_id) => {
-        Alert.alert("Delete Invitation?", `Permanetly delete invitation to ${invite_email}`,[
+        Alert.alert("Delete Invitation?", `Permanetly delete invitation to ${invite_email}`, [
             {
                 text: "Confirm",
-                onPress: () => { 
-                    this.context.deleteInvitation(this.state.access_token, invite_id);
-                    this.componentDidMount();
+                onPress: async () => {
+                    await this.context.deleteInvitation(this.state.access_token, invite_id);
+                    this._updateList();
                 }
             },
             {
                 text: "Cancel",
             },
         ])
-
-        //await this.context._deleteInvitiation(this.state.access_token, invite_id);
-        //this.componentDidMount();
     }
 
     _displayGuardians = () => {
@@ -105,7 +109,7 @@ class Student_GuardianList extends Component {
 
     render() {
         if (this.state.loading) {
-            return(<View style={styles.containerLoading}>
+            return (<View style={styles.containerLoading}>
                 <ActivityIndicator size="large" color="#8CD4CC" />
             </View>);
         }
@@ -128,8 +132,8 @@ const styles = StyleSheet.create({
     containerLoading: {
         flex: 1,
         backgroundColor: Colors.beige.opaque,
-        padding: 16, 
-        alignContent:"center",
+        padding: 16,
+        alignContent: "center",
         justifyContent: "center",
     },
     list: {

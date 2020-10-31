@@ -20,7 +20,8 @@ class Student_Home extends Component {
         courses.map((course, index) => {
             var coursework = course.work;
             coursework.map((work, index) => {
-                work_list.push(<AtomusCard key={work.coursework_id} course={course.name} title={work.title} description={work.description} due_date={work.due_date} onPress={() => this.props.navigation.navigate("Coursework", { coursework: work })} />)
+                if (dateCalc.dateDiffInDays(new Date, work.due_date) < 14)
+                    work_list.push(<AtomusCard key={work.coursework_id} course={course.name} title={work.title} description={work.description} due_date={work.due_date} onPress={() => this.props.navigation.navigate("Coursework", { coursework: work })} />)
             })
         });       
         work_list.sort((a, b) => ((dateCalc.dateDiffInDays(a.props.due_date, b.props.due_date) < 0 ) ? 1 : -1))

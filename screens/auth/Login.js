@@ -1,14 +1,14 @@
-import React, { Component } from "react"
-import { View, StyleSheet, Image } from "react-native"
+import React, { Component } from "react";
+import { View, StyleSheet, Image } from "react-native";
 
-import { Context as AppContext } from "../../context/appContext"
-import Colors from "../../constants/Colors"
-import AtomusText from "../../components/Text"
-import AtomusButton from "../../components/Button"
+import { Context as AppContext } from "../../context/appContext";
+import Colors from "../../constants/Colors";
+import AtomusText from "../../components/Text";
+import AtomusButton from "../../components/Button";
 
 class Login extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.navigation = this.props.navigation;
     }
 

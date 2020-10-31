@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
-import { Card, Icon } from "react-native-elements"
+import { Platform, StyleSheet, View } from "react-native";
 import { Context as AppContext } from "../../context/appContext";
-import { Camera } from "expo-camera"
-import * as Permissions from "expo-permissions";
 
 import Colors from "../../constants/Colors";
-import AtomusText from "../../components/Text"
-import AtomusButton from "../../components/Button"
-import dateCalc from "../../utils/dateCalc"
+import AtomusText from "../../components/Text";
+import AtomusButton from "../../components/Button";
+import dateCalc from "../../utils/dateCalc";
 
 class Student_CourseworkDetail extends Component {
     constructor(props) {

@@ -1,12 +1,12 @@
-import createDataContext from './createDataContext';
-import User from '../backend/models/User'
-import Course from '../backend/models/Course'
-import Coursework from '../backend/models/Coursework'
-import Submission from '../backend/models/Submission'
+import createDataContext from "./createDataContext";
+import User from "../backend/models/User";
+import Course from "../backend/models/Course";
+import Coursework from "../backend/models/Coursework";
+import Submission from "../backend/models/Submission";
 
-import userService from '../backend/services/userService'
-import courseService from '../backend/services/courseService'
-import dateCalc from "../utils/dateCalc"
+import userService from "../backend/services/userService";
+import courseService from "../backend/services/courseService";
+import dateCalc from "../utils/dateCalc";
 
 //adapted from 'BalanceMe' @Kory Brantley with permission @Rahul  
 const authReducer = (state, action) => {

@@ -1,10 +1,10 @@
-import React, { Component } from "react"
-import { SafeAreaView, View, StyleSheet, Text } from "react-native"
-import { ListItem, Icon, Input, Button, Divider } from "react-native-elements"
-import { Context as AppContext } from "../../context/appContext"
+import React, { Component } from "react";
+import { SafeAreaView, View, StyleSheet,  } from "react-native";
+import { ListItem, Divider } from "react-native-elements";
+import { Context as AppContext } from "../../context/appContext";
 
-import Colors from "../../constants/Colors"
-import AtomusText from "../../components/Text"
+import Colors from "../../constants/Colors";
+import AtomusText from "../../components/Text";
 
 class Student_Drawer extends Component {
     constructor(props) {

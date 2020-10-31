@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Alert, StyleSheet, ScrollView, TextInput, View } from "react-native";
-import { ListItem } from "react-native-elements"
+import { ListItem } from "react-native-elements";
 import { Context as AppContext } from "../../context/appContext";
 
 import Colors from "../../constants/Colors";
-import AtomusText from "../../components/Text"
+import AtomusText from "../../components/Text";
 import AtomusButton from "../../components/Button";
 
 class Student_GuardianInvite extends Component {

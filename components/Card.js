@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { StyleSheet, TouchableOpacity, View} from "react-native"
+import { StyleSheet, TouchableOpacity, View} from "react-native";
 import PropTypes from "prop-types";
-import { Card, Icon } from "react-native-elements"
+import { Card, Icon } from "react-native-elements";
 
-import Colors from "../constants/Colors"
-import AtomusText from "./Text"
-import dateCalc from "../utils/dateCalc"
+import Colors from "../constants/Colors";
+import AtomusText from "./Text";
+import dateCalc from "../utils/dateCalc";
 
 export default class AtomusCard extends Component {
     constructor(props) {

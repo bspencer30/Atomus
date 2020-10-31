@@ -1,10 +1,10 @@
-import React, { Component } from "react"
-import { StyleSheet, ScrollView, View, Text, Button } from "react-native"
+import React, { Component } from "react";
+import { StyleSheet, ScrollView, View,} from "react-native";
 
-import Colors from "../../constants/Colors"
+import Colors from "../../constants/Colors";
 
-import AtomusCard from "../../components/Card"
-import AtomusText from "../../components/Text"
+import AtomusCard from "../../components/Card";
+import AtomusText from "../../components/Text";
 
 class Student_Course extends Component {
 

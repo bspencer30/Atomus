@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { ActivityIndicator, Alert, StyleSheet, ScrollView, View } from "react-native";
-import { ListItem, Icon } from "react-native-elements"
+import { ListItem, Icon } from "react-native-elements";
 import { Context as AppContext } from "../../context/appContext";
 
 import Colors from "../../constants/Colors";
-import AtomusText from "../../components/Text"
-import AtomusButton from "../../components/Button"
+import AtomusText from "../../components/Text";
+import AtomusButton from "../../components/Button";
 
 class Student_GuardianList extends Component {
     constructor(props) {

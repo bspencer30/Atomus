@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { StyleSheet, ScrollView, Text, View } from "react-native";
-import { Card, Icon } from "react-native-elements"
+import { StyleSheet, ScrollView, View } from "react-native";
 import { Context as AppContext } from "../../context/appContext";
 
 import Colors from "../../constants/Colors";
-import AtomusText from "../../components/Text"
-import AtomusCard from "../../components/Card"
-import dateCalc from "../../utils/dateCalc"
+import AtomusText from "../../components/Text";
+import AtomusCard from "../../components/Card";
+import dateCalc from "../../utils/dateCalc";
 
 class Student_Home extends Component {
     constructor(props) {

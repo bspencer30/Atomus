@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, TouchableOpacity, Image, Linking } from "react-native";
-import { Icon } from "react-native-elements"
+import { Icon } from "react-native-elements";
 import { Context as AppContext } from "../../context/appContext";
 
-import { Camera } from "expo-camera"
+import { Camera } from "expo-camera";
 import * as Permissions from "expo-permissions";
-import driveService from "../../backend/services/driveService"
+import driveService from "../../backend/services/driveService";
 
 
 class SubmissionCamera extends Component {

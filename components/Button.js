@@ -1,10 +1,9 @@
-import React, { Component } from "react"
-import { StyleSheet, TouchableOpacity, View, Text } from "react-native"
-import { Button } from 'react-native-elements'
-import PropTypes from "prop-types"
+import React, { Component } from "react";
+import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import PropTypes from "prop-types";
 
-import Colors from "../constants/Colors"
-import AtomusText from "./Text"
+import Colors from "../constants/Colors";
+import AtomusText from "./Text";
 
 export default class AtomusButton extends Component {
     constructor(props) {

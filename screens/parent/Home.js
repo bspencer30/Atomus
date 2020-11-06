@@ -27,17 +27,17 @@ class Parent_Home extends Component {
         
         for (const key in this.state.children) {
             const child = this.state.children[key];
-            let late_count = 0;
+            var late_count = 0;
             child.courses.filter(x=> 
                 late_count += x.courseWork.filter(y => (y.assignmentSubmission.late) && (y.assignmentSubmission.state =="new")).length
             );
-            let done_count = 0;
+            var done_count = 0;
             child.courses.filter(x=> 
                 done_count += x.courseWork.filter(y => (y.assignmentSubmission.state =="turnedIn")).length
             );
-            let upcoming_count = 0;
+            var upcoming_count = 0;
             child.courses.filter(x=> 
-                upcoming_count += x.courseWork.filter(y => (y.assignmentSubmission.late)).length
+                upcoming_count += x.courseWork.filter(y => !(y.assignmentSubmission.late) && (y.assignmentSubmission.state =="new")).length
             );
             child_list.push(<AtomusCard_Child key={key} name={child.name} email={child.email} 
                 late={late_count} done={done_count} upcoming={upcoming_count}/>)

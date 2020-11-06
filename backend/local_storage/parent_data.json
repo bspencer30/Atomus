@@ -1,0 +1,184 @@
+{
+    "children": [
+        {
+            "key": "dasd",
+            "name": "Timmey",
+            "email": "timmy@gmail.com",
+            "courses": [
+                {
+                    "name": "Aether",
+                    "courseWork": [
+                        {
+                            "courseId": "199528089251",
+                            "id": "199528089308",
+                            "title": "Cultural Aspects of Food",
+                            "description": "Laggardly marvelous fondly so absurd that that forecast goodness far quaint more anagogic regarding sniffled quail far furious considering rose hey strategic or sanely hugged supremely winsomely hey that yet less and.",
+                            "state": "PUBLISHED",
+                            "alternateLink": "https://classroom.google.com/c/MTk5NTI4MDg5MjUx/a/MTk5NTI4MDg5MzA4/details",
+                            "creationTime": "2020-10-26T15:48:18.399Z",
+                            "updateTime": "2020-10-31T16:31:38.943Z",
+                            "dueDate": {
+                                "year": 2020,
+                                "month": 11,
+                                "day": 2
+                            },
+                            "dueTime": {
+                                "hours": 4,
+                                "minutes": 59
+                            },
+                            "maxPoints": 100,
+                            "workType": "ASSIGNMENT",
+                            "submissionModificationMode": "MODIFIABLE_UNTIL_TURNED_IN",
+                            "assigneeMode": "ALL_STUDENTS",
+                            "creatorUserId": "109900646731877857486",
+                            "assignmentSubmission": {
+                                "state": "turnedIn",
+                                "late": true
+                            }
+                        },
+                        {
+                            "courseId": "199528089251",
+                            "id": "199528089442",
+                            "title": "Philosophy and Star Trek",
+                            "description": "Sordid haltered owing exclusive enticing wow well far noisy near so goldfish crud that well erect woolly then coarse well gurgled irresistible immutable far punctiliously wherever hey stunningly much toucan ahead talkatively on rhinoceros some jeez more lemming beneath slickly about far far bashful a more hence since far lingering scallop raucous that a goodness usefully played arguable inanimate creative.",
+                            "state": "PUBLISHED",
+                            "alternateLink": "https://classroom.google.com/c/MTk5NTI4MDg5MjUx/a/MTk5NTI4MDg5NDQy/details",
+                            "creationTime": "2020-10-26T15:50:52.125Z",
+                            "updateTime": "2020-10-31T16:31:25.211Z",
+                            "dueDate": {
+                                "year": 2020,
+                                "month": 11,
+                                "day": 2
+                            },
+                            "dueTime": {
+                                "hours": 4,
+                                "minutes": 59
+                            },
+                            "maxPoints": 100,
+                            "workType": "ASSIGNMENT",
+                            "submissionModificationMode": "MODIFIABLE_UNTIL_TURNED_IN",
+                            "assigneeMode": "ALL_STUDENTS",
+                            "creatorUserId": "109900646731877857486",
+                            "assignmentSubmission": {
+                                "state": "new",
+                                "late": true
+                            }
+                        },
+                        {
+                            "courseId": "199528089251",
+                            "id": "199528089490",
+                            "title": "Learning from YouTube",
+                            "description": "Vainly impolite far ouch reined forgot inside much overdid yikes said in the this including far vulture pesky jeepers more dropped pangolin.",
+                            "state": "PUBLISHED",
+                            "alternateLink": "https://classroom.google.com/c/MTk5NTI4MDg5MjUx/a/MTk5NTI4MDg5NDkw/details",
+                            "creationTime": "2020-10-26T15:51:21.076Z",
+                            "updateTime": "2020-10-31T16:31:14.578Z",
+                            "dueDate": {
+                                "year": 2020,
+                                "month": 11,
+                                "day": 1
+                            },
+                            "dueTime": {
+                                "hours": 3,
+                                "minutes": 59
+                            },
+                            "maxPoints": 100,
+                            "workType": "ASSIGNMENT",
+                            "submissionModificationMode": "MODIFIABLE_UNTIL_TURNED_IN",
+                            "assigneeMode": "ALL_STUDENTS",
+                            "creatorUserId": "109900646731877857486",
+                            "assignmentSubmission": {
+                                "state": "new",
+                                "late": true
+                            }
+                        },
+                        {
+                            "courseId": "199528089251",
+                            "id": "199528089413",
+                            "title": "Art of Walking",
+                            "description": "Changed llama goodness convincing darn more crud on straightly congratulated stoic considering that ouch far suavely warmly licentiously macaw one ladybug well spat mute frowned this limpet connected responsibly crud that fussy cried on misled that far shivered grievously seal ground then fluently and cockatoo indiscreet alas overcast insistently some upheld much a wombat oversaw so nervelessly when despite pathetically flirtatious immensely rhinoceros more powerlessly man-of-war faltering one kangaroo enthusiastically goodness the resolutely in splendidly hungry and that smooched cassowary dear alas less a save balked.",
+                            "state": "PUBLISHED",
+                            "alternateLink": "https://classroom.google.com/c/MTk5NTI4MDg5MjUx/a/MTk5NTI4MDg5NDEz/details",
+                            "creationTime": "2020-10-26T15:50:18.383Z",
+                            "updateTime": "2020-10-26T15:50:30.494Z",
+                            "dueDate": {
+                                "year": 2020,
+                                "month": 11,
+                                "day": 14
+                            },
+                            "dueTime": {
+                                "hours": 4,
+                                "minutes": 59
+                            },
+                            "maxPoints": 100,
+                            "workType": "ASSIGNMENT",
+                            "submissionModificationMode": "MODIFIABLE_UNTIL_TURNED_IN",
+                            "assigneeMode": "ALL_STUDENTS",
+                            "creatorUserId": "109900646731877857486",
+                            "assignmentSubmission": {
+                                "state": "new",
+                                "late": false
+                            }
+                        },
+                        {
+                            "courseId": "199528089251",
+                            "id": "199528089384",
+                            "title": "The American Vacation",
+                            "description": "Gosh much cm vulnerable one regarding and overshot arose befell the alas that following far salmon from evenly obsessive picked some concentric less overhung far and goodness poignant editorially beat that jeepers grizzly various hello and darn reflectively terrible sensationally blameless checked and frowningly far naughty hence hey into thanks that trod crab much wow when jeepers conically seagull that some since pulled fashionably goat ready well packed much oh as however wasp falcon piteous lobster much beheld oh this at a walking went firmly manfully.",
+                            "state": "PUBLISHED",
+                            "alternateLink": "https://classroom.google.com/c/MTk5NTI4MDg5MjUx/a/MTk5NTI4MDg5Mzg0/details",
+                            "creationTime": "2020-10-26T15:49:45.320Z",
+                            "updateTime": "2020-10-26T15:49:57.363Z",
+                            "dueDate": {
+                                "year": 2020,
+                                "month": 11,
+                                "day": 14
+                            },
+                            "dueTime": {
+                                "hours": 4,
+                                "minutes": 59
+                            },
+                            "maxPoints": 100,
+                            "workType": "ASSIGNMENT",
+                            "submissionModificationMode": "MODIFIABLE_UNTIL_TURNED_IN",
+                            "assigneeMode": "ALL_STUDENTS",
+                            "creatorUserId": "109900646731877857486",
+                            "assignmentSubmission": {
+                                "state": "new",
+                                "late": false
+                            }
+                        },
+                        {
+                            "courseId": "199528089251",
+                            "id": "199528089360",
+                            "title": "Modern Popular Arts",
+                            "description": "More mischievous cynically past much below one less lightheartedly some rolled incongruous beamed appalling newt a childishly opposite mounted ouch tunefully then and unbearably copied far dropped amicable perilously heard straight less alas some strategically but this one less credible ripely amidst rebuilt antelope falcon crud before bastard instead re-laid selfish meekly and and overrode gosh however puerilely thoughtfully behind that less a blamelessly amphibious via passable far off more and flawless a wherever admonishing much dolphin sheared in urchin some fled.",
+                            "state": "PUBLISHED",
+                            "alternateLink": "https://classroom.google.com/c/MTk5NTI4MDg5MjUx/a/MTk5NTI4MDg5MzYw/details",
+                            "creationTime": "2020-10-26T15:49:04.144Z",
+                            "updateTime": "2020-10-26T15:49:18.380Z",
+                            "dueDate": {
+                                "year": 2020,
+                                "month": 11,
+                                "day": 7
+                            },
+                            "dueTime": {
+                                "hours": 4,
+                                "minutes": 59
+                            },
+                            "maxPoints": 100,
+                            "workType": "ASSIGNMENT",
+                            "submissionModificationMode": "MODIFIABLE_UNTIL_TURNED_IN",
+                            "assigneeMode": "ALL_STUDENTS",
+                            "creatorUserId": "109900646731877857486",
+                            "assignmentSubmission": {
+                                "state": "turnedIn",
+                                "late": false
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

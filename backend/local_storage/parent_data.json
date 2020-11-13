@@ -4,6 +4,9 @@
             "key": "0",
             "name": "Timmey",
             "email": "timmy@gmail.com",
+            "school": "Atomus Elementary School",
+            "age": "8",
+            "grade": "3rd",
             "courses": [
                 {
                     "name": "Aether",
@@ -184,6 +187,9 @@
             "key": "1",
             "name": "Thomas",
             "email": "thomas@gmail.com",
+            "school": "Atomus Elementary School",
+            "age": "9",
+            "grade": "4th",
             "courses": [
                 {
                     "name": "Boreas",

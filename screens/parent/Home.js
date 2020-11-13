@@ -12,6 +12,7 @@ class Parent_Home extends Component {
     constructor(props) {
         super(props);
         this.state = {children: data.children};
+        this.childPress = this.childPress.bind(this);
     }
    
     static navigationOptions = ({ navigation }) => ({
@@ -20,7 +21,15 @@ class Parent_Home extends Component {
     });
 
            
-    
+    childPress(key) {
+        const child = this.state.children[key];
+
+        this.props.navigation.navigate("Child", 
+            {
+                child_info: child
+            }
+        );
+    }
     _displayChildren = () => {
         
         const child_list = [];
@@ -40,7 +49,7 @@ class Parent_Home extends Component {
                 upcoming_count += x.courseWork.filter(y => !(y.assignmentSubmission.late) && (y.assignmentSubmission.state =="new")).length
             );
             child_list.push(<AtomusCard_Child key={key} name={child.name} email={child.email} 
-                late={late_count} done={done_count} upcoming={upcoming_count}/>)
+                late={late_count} done={done_count} upcoming={upcoming_count} onPress={this.childPress} child_key={key}/>)
         }
         return child_list;
     }

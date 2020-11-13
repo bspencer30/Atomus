@@ -12,7 +12,7 @@ export default class AtomusCard_Child extends Component {
     }
 
     onPress = () => {
-        this.props.onPress();
+        this.props.onPress(this.props.child_key);
     };
 
      render() {
@@ -26,15 +26,15 @@ export default class AtomusCard_Child extends Component {
                         </View>
                         <View style={styles.status}>
                             <View style={styles.badgeContainer}>
-                                <AtomusText text="late" style={[styles.childEmail, {textAlign:"center"}]} />
+                                <AtomusText text="late" style={styles.badgeLabel} />
                                 <Badge value={this.props.late} status="error" size="large" badgeStyle={[styles.badge, {backgroundColor:"#F87060"}]} textStyle={styles.badgeText}/>
                             </View>
                             <View style={styles.badgeContainer}>
-                                <AtomusText text="done" style={[styles.childEmail, {textAlign:"center"}]} />
+                                <AtomusText text="done" style={styles.badgeLabel} />
                                 <Badge value={this.props.done} status="success" badgeStyle={[styles.badge, {backgroundColor:"#44af69"}]} textStyle={styles.badgeText}/>
                             </View>
                             <View style={styles.badgeContainer}>
-                                <AtomusText text="upcoming" style={[styles.childEmail, {textAlign:"center"}]} />
+                                <AtomusText text="upcoming" style={styles.badgeLabel} />
                                 <Badge value={this.props.upcoming} status="primary" badgeStyle={[styles.badge, {backgroundColor:"#84BCDA"}]} textStyle={styles.badgeText}/>
                             </View>
                         </View>
@@ -61,6 +61,11 @@ const styles = StyleSheet.create({
     },
     badgeText:{
         fontSize:15,
+    },
+    badgeLabel:{
+        fontSize: 14,
+        color: "#4f4f4f",
+        textAlign: "center",
     },
     opacityContainer:{
         flex: 1,

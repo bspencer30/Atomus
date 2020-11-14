@@ -7,31 +7,55 @@ import Colors from "../../constants/Colors";
 import AtomusText from "../../components/Text"
 import AtomusCard_Child from "../../components/Card_Child"
 import AtomusButton from "../../components/Button";
-
+const data = require('../../backend/local_storage/parent_data.json');
 class Parent_Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {children: data.children};
+        this.childPress = this.childPress.bind(this);
     }
+   
     static navigationOptions = ({ navigation }) => ({
         headerTitle: () => <AtomusText fontSize={20} text={"Children"} />,
         headerRight: () => <Icon name="add" style={{ marginRight: 16 }} onPress={() => navigation.navigate("AddChild")} />
     });
 
+           
+    childPress(key) {
+        const child = this.state.children[key];
 
+        this.props.navigation.navigate("Child", 
+            {
+                child_info: child
+            }
+        );
+    }
     _displayChildren = () => {
-        const { children } = this.context.state.user;
+        
         const child_list = [];
         
-        for (const key in children) {
-            const child = children[key]
-            child_list.push(<AtomusCard_Child key={key} name={child.name} email={child.email} />)
+        for (const key in this.state.children) {
+            const child = this.state.children[key];
+            var late_count = 0;
+            child.courses.filter(x=> 
+                late_count += x.courseWork.filter(y => (y.assignmentSubmission.late) && (y.assignmentSubmission.state =="new")).length
+            );
+            var done_count = 0;
+            child.courses.filter(x=> 
+                done_count += x.courseWork.filter(y => (y.assignmentSubmission.state =="turnedIn")).length
+            );
+            var upcoming_count = 0;
+            child.courses.filter(x=> 
+                upcoming_count += x.courseWork.filter(y => !(y.assignmentSubmission.late) && (y.assignmentSubmission.state =="new")).length
+            );
+            child_list.push(<AtomusCard_Child key={key} name={child.name} email={child.email} 
+                late={late_count} done={done_count} upcoming={upcoming_count} onPress={this.childPress} child_key={key}/>)
         }
         return child_list;
     }
 
     render() {
-        if (!this.context.state.user.children[0]) {
+        if (this.state.children.length == 0) {
             return (
                 <View style={[styles.container, { alignItems: "center" }]}>
                     <AtomusButton backgroundColor={Colors.turquoise.opaque} title={"No Children, Add Some"} style={{ marginTop: 70 }} onPress={() => this.props.navigation.navigate("AddChild")} />

@@ -27,15 +27,18 @@ export default class AtomusCard_Child extends Component {
                         <View style={styles.status}>
                             <View style={styles.badgeContainer}>
                                 <AtomusText text="late" style={styles.badgeLabel} />
-                                <Badge value={this.props.late} status="error" size="large" badgeStyle={[styles.badge, {backgroundColor:"#F87060"}]} textStyle={styles.badgeText}/>
+                                {/* "#F87060" */}
+                                <Badge value={this.props.late} status="error" size="large" badgeStyle={[styles.badge, {backgroundColor:Colors.soft_pink.opaque}]} textStyle={styles.badgeText}/>
                             </View>
                             <View style={styles.badgeContainer}>
                                 <AtomusText text="done" style={styles.badgeLabel} />
-                                <Badge value={this.props.done} status="success" badgeStyle={[styles.badge, {backgroundColor:"#44af69"}]} textStyle={styles.badgeText}/>
+                                {/* "#44af69" */}
+                                <Badge value={this.props.done} status="success" badgeStyle={[styles.badge, {backgroundColor: Colors.turquoise.opaque}]} textStyle={styles.badgeText}/>
                             </View>
                             <View style={styles.badgeContainer}>
                                 <AtomusText text="upcoming" style={styles.badgeLabel} />
-                                <Badge value={this.props.upcoming} status="primary" badgeStyle={[styles.badge, {backgroundColor:"#84BCDA"}]} textStyle={styles.badgeText}/>
+                                {/* "#44af69" */}
+                                <Badge value={this.props.upcoming} status="primary" badgeStyle={[styles.badge, {backgroundColor:Colors.yellow.opaque}]} textStyle={styles.badgeText}/>
                             </View>
                         </View>
                     

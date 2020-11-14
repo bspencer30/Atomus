@@ -6,6 +6,7 @@ import { Icon } from "react-native-elements"
 import Parent_Home from "../../screens/parent/Home"
 import Parent_AddChild from "../../screens/parent/AddChild"
 import Child from "../../screens/parent/Child"
+import ChildDetail from "../../screens/parent/ChildDetail"
 
 const ParentNavConfig = {
     initialRouteName: 'Home',
@@ -28,6 +29,14 @@ const RouteConfigs = {
     },
     Child: {
         screen: Child,
+        navigationOptions: ({navigation}) => ({
+            //headerTitle: () => <Text/>,
+            headerLeft: () => <HeaderBackButton labelVisible={false} tintColor="#2E2F2F" onPress={()=>{navigation.goBack()}}/>,
+            headerTransparent: true, 
+        })
+    },
+    ChildDetail: {
+        screen: ChildDetail,
         navigationOptions: ({navigation}) => ({
             //headerTitle: () => <Text/>,
             headerLeft: () => <HeaderBackButton labelVisible={false} tintColor="#2E2F2F" onPress={()=>{navigation.goBack()}}/>,

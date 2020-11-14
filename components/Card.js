@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, TouchableOpacity, View} from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import PropTypes from "prop-types";
 import { Card, Icon } from "react-native-elements";
 
@@ -8,83 +8,114 @@ import AtomusText from "./Text";
 import dateCalc from "../utils/dateCalc";
 
 export default class AtomusCard extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    onPress = () => {
-        this.props.onPress();
-    };
+  onPress = () => {
+    this.props.onPress();
+  };
 
-    _colorIndicator = (date) => {
-        currentDate = new Date();
-        difference = dateCalc.dateDiffInDays(currentDate, date);
-        if (difference < 3){
-            return Colors.soft_pink.opaque;
-        } else if (difference < 7){
-            return Colors.yellow.opaque;
-        } else {
-            return Colors.turquoise.opaque;
-        }
+  _colorIndicator = (date) => {
+    if (this.props.status != "") {
+        switch(this.props.status){
+            case "done":
+                return Colors.turquoise.opaque
+            case "late":
+                return Colors.soft_pink.opaque;
+            case "upcoming":
+                return Colors.yellow.opaque; 
+        }       
+    } else {
+      var currentDate = new Date();
+      var difference = dateCalc.dateDiffInDays(currentDate, date);
+      if (difference < 3) {
+        return Colors.soft_pink.opaque;
+      } else if (difference < 7) {
+        return Colors.yellow.opaque;
+      } else {
+        return Colors.turquoise.opaque;
+      }
     }
+  };
 
-    _shortDescription = (description) => {
-        var length = description.length;
-        if (length < 60) return description;    
-        return description.substring(0, description.indexOf(" ", 85)).trim() + ". . .";
-    }
+  _shortDescription = (description) => {
+    var length = description.length;
+    if (length < 60) return description;
+    return (
+      description.substring(0, description.indexOf(" ", 85)).trim() + ". . ."
+    );
+  };
 
-    render() {
-        return (
-            <TouchableOpacity onPress={this.onPress}>
-                <Card containerStyle={[styles.container, {shadowColor: this._colorIndicator(this.props.due_date), borderColor: this._colorIndicator(this.props.due_date)}]}>
-                    <View style={{flexDirection: "row", justifyContent: "space-between"}}>
-                        <AtomusText text={this.props.title} style={styles.titleText} />
-                        <AtomusText text={this.props.course} fontSize={14}/>
-                    </View>
-                    <AtomusText text={"due " + this.props.due_date.toDateString()} style={styles.dueDateText} />
-                    <AtomusText text={this._shortDescription(this.props.description)} />
-                </Card>
-            </TouchableOpacity>
-        );
-    }
+  render() {
+    return (
+      <TouchableOpacity onPress={this.onPress}>
+        <Card
+          containerStyle={[
+            styles.container,
+            {
+              shadowColor: this._colorIndicator(this.props.due_date),
+              borderColor: this._colorIndicator(this.props.due_date),
+            },
+          ]}
+        >
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
+            <AtomusText text={this.props.title} style={styles.titleText} />
+            <AtomusText text={this.props.course} fontSize={14} />
+          </View>
+          <AtomusText
+            text={"due " + this.props.due_date.toDateString()}
+            style={styles.dueDateText}
+          />
+          <AtomusText text={this._shortDescription(this.props.description)} />
+        </Card>
+      </TouchableOpacity>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        borderRadius: 5,
-        backgroundColor: "#f1eee7",
-        shadowRadius: 3,
-        borderWidth: 2,
-    },
-    defaultButton: {
-        alignItems: "center",
-        padding: 15,
-        width: 300,
-        borderRadius: 5,
-    },
-    titleText: {
-        fontSize: 18,
-        textAlign: "left",
-        marginBottom: 0,
-        fontFamily: "NunitoSans_Bold"
-    },
-    dueDateText: {
-        fontSize: 14,
-        color: "#4f4f4f"
-    }
-})
+  container: {
+    borderRadius: 5,
+    backgroundColor: "#f1eee7",
+    shadowRadius: 3,
+    borderWidth: 2,
+  },
+  defaultButton: {
+    alignItems: "center",
+    padding: 15,
+    width: 300,
+    borderRadius: 5,
+  },
+  titleText: {
+    fontSize: 18,
+    textAlign: "left",
+    marginBottom: 0,
+    fontFamily: "NunitoSans_Bold",
+  },
+  dueDateText: {
+    fontSize: 14,
+    color: "#4f4f4f",
+  },
+});
 AtomusCard.propTypes = {
-    description: PropTypes.string,
-    due_date: PropTypes.object,
-    onPress: PropTypes.func,
-    title: PropTypes.string,
-}
+  description: PropTypes.string,
+  due_date: PropTypes.object,
+  onPress: PropTypes.func,
+  title: PropTypes.string,
+  status: PropTypes.string,
+};
 
 AtomusCard.defaultProps = {
-    course: "",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    due_date: new Date(),
-    onPress: () => {console.log("Card Pressed");},
-    title: "Default Assignment",
-}
+  course: "",
+  description:
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  due_date: new Date(),
+  onPress: () => {
+    console.log("Card Pressed");
+  },
+  title: "Default Assignment",
+  status: "",
+};

@@ -1,7 +1,7 @@
 import createDataContext from "./createDataContext";
 import User from "../backend/models/User";
 import Course from "../backend/models/Course";
-import Coursework from "../backend/models/CourseWork";
+import Coursework from "../backend/models/Coursework";
 import Submission from "../backend/models/Submission";
 
 import userService from "../backend/services/userService";

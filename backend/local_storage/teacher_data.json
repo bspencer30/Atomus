@@ -1,0 +1,88 @@
+{
+    "classes": [
+        {
+            "key": "0",
+            "name": "CHANGEME",
+            "coursework": [
+                {
+                    "course_key": "0",
+                    "title": "Tree Climbing",
+                    "description": "To after doubtful beyond thus inversely owing when educational astonishingly the darn that less then felt some upon much far much across one between much hopefully alas.",
+                    "due_date": "2020-11-30",
+                    "students": [
+                        {
+                            "name": "Timmey",
+                            "status": "not_submitted"
+                        },
+                        {
+                            "name": "Thomas",
+                            "status": "submitted"
+                        }
+                    ]
+                },
+                {
+                    "course_key": "1",
+                    "title": "How to Watch Television",
+                    "description": "Smart hello much mightily much darn and unsociable one bounced broad unfitting badger fidgeted much so some gosh foretold hotly falcon dragonfly forbiddingly splashed one next.",
+                    "due_date": "2020-11-31",
+                    "students": [
+                        {
+                            "name": "Timmey",
+                            "status": "late"
+                        },
+                        {
+                            "name": "Thomas",
+                            "status": "not_submitted"
+                        }
+                    ]
+                },
+                {
+                    "course_key": "2",
+                    "title": "Circus Arts",
+                    "description": "More much wildebeest and vivid temperate some much some deep fitting wherever frisky this contrary customarily crud and octopus this darn hence some hummed contemplated secure one far when impala against sprang yikes.",
+                    "due_date": "2020-12-01",
+                    "students": [
+                        {
+                            "name": "Timmey",
+                            "status": "submitted"
+                        },
+                        {
+                            "name": "Thomas",
+                            "status": "late"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "1",
+            "name": "CHANGEME2: ELECTRIC BOOGALOO",
+            "coursework": [
+                {
+                    "course_key": "0",
+                    "title": "Philosophy in the Twilight Zone",
+                    "description": "Disgracefully however vindictive rare invaluable robin beaver yikes equally habitual less scantly a overcast convulsive panther locked that greyhound this until drove barring soft puerile youthfully intellectually flexed less sighed suavely teasingly.",
+                    "due_date": "2020-11-31",
+                    "students": [
+                        {
+                            "name": "Thomas",
+                            "status": "not_submitted"
+                        }
+                    ]
+                },
+                {
+                    "course_key": "1",
+                    "title": "Street Fighting Mathematics",
+                    "description": "Prior truly koala haughtily on that spluttered so and other one hello royally on aardvark heartlessly obsessive stung cuffed mammoth confessedly much resolute vulture flamingo or but manifestly much consoled much alas.",
+                    "due_date": "2020-12-01",
+                    "students": [
+                        {
+                            "name": "Thomas",
+                            "status": "submitted"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

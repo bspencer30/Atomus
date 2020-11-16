@@ -23,12 +23,14 @@ class Splash extends Component {
                 case "student":
                     await this.context.getCourses(this.context.state.credentials.access_token);
                     //await this.context.getGuardians(this.context.state.crendentials.access_token);
-                    this.navigation.navigate("Student");
+                    //this.navigation.navigate("Student");
+                    this.navigation.navigate("Teacher");
                     break;
                 case "parent":
                     this.navigation.navigate("Parent");
                     break;
                 case "teacher":
+                    this.navigation.navigate("Teacher");
                     break;
                 default:
             }

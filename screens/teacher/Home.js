@@ -28,13 +28,12 @@ class Teacher_Home extends Component {
             var late_count = 0;
             var not_submitted_count = 0;
 
-            var submitted_list = [];
-            var late_list = [];
-            var not_submitted_list = [];
-            
             const coursework = cur_class.coursework;
             for (const assignment_key in coursework) {
                 const assignment = coursework[assignment_key];
+                var submitted_list = [];
+                var late_list = [];
+                var not_submitted_list = [];
                 const assignment_name = assignment.name;
                 const students = assignment.students;
                 for (const i in students) {
@@ -66,7 +65,7 @@ class Teacher_Home extends Component {
             }
             class_list.push(<AtomusCard_Class key={class_key} name={cur_class.name}
                 late={late_count} submitted={submitted_count} not_submitted={not_submitted_count}
-                onPress={() => this.props.navigation.navigate("Class", {class_info: cur_class})}/>)
+                onPress={() => {this.props.navigation.navigate("ClassView", {class_info: cur_class})}}/>)
         }
         return class_list;
     }

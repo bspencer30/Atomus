@@ -27,9 +27,12 @@ class Teacher_Home extends Component {
             var submitted_count = 0;
             var late_count = 0;
             var not_submitted_count = 0;
+            var students_num = 0;
+            var num_assignments = 0;
 
             const coursework = cur_class.coursework;
             for (const assignment_key in coursework) {
+                num_assignments += 1;
                 const assignment = coursework[assignment_key];
                 var submitted_list = [];
                 var late_list = [];
@@ -41,17 +44,20 @@ class Teacher_Home extends Component {
                     var date = new Date();
                     switch(student.status) {
                         case "submitted":
+                            students_num += 1;
                             submitted_count += 1;
                             student.due_date = date;
                             submitted_list.push(student);
                             break;
                         case "late":
+                            students_num += 1;
                             late_count += 1;
                             date.setFullYear(2020, date.getMonth() - (Math.random()), date.getDay() - ((Math.random() * 15) + 1));
                             student.due_date = date;
                             late_list.push(student);
                             break;
                         case "not_submitted":
+                            students_num += 1;
                             not_submitted_count += 1;
                             date.setFullYear(2020, date.getMonth() + (Math.random() + 1), date.getDay() + ((Math.random() * 7) + 1));
                             student.due_date = date;
@@ -63,8 +69,9 @@ class Teacher_Home extends Component {
                 assignment.late = late_list;
                 assignment.not_submitted = not_submitted_list;
             }
+            students_num = students_num / num_assignments;
             class_list.push(<AtomusCard_Class key={class_key} name={cur_class.name}
-                late={late_count} submitted={submitted_count} not_submitted={not_submitted_count}
+                students_num={students_num}
                 onPress={() => {this.props.navigation.navigate("ClassView", {class_info: cur_class})}}/>)
         }
         return class_list;

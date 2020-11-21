@@ -24,19 +24,9 @@ export default class AtomusCard_Class extends Component {
                             <AtomusText text={this.props.name} style={styles.titleText} />
                             <View style={styles.status}>
                                 <View style={styles.badgeContainer}>
-                                    <AtomusText text="late" style={styles.badgeLabel} />
+                                    <AtomusText text="students" style={styles.badgeLabel} />
                                     {/* "#F87060" */}
-                                    <Badge value={this.props.late} status="error" size="large" badgeStyle={[styles.badge, {backgroundColor:Colors.soft_pink.opaque}]} textStyle={styles.badgeText}/>
-                                </View>
-                                <View style={styles.badgeContainer}>
-                                    <AtomusText text="submitted" style={styles.badgeLabel} />
-                                    {/* "#44af69" */}
-                                    <Badge value={this.props.submitted} status="success" badgeStyle={[styles.badge, {backgroundColor: Colors.turquoise.opaque}]} textStyle={styles.badgeText}/>
-                                </View>
-                                <View style={styles.badgeContainer}>
-                                    <AtomusText text="not submitted" style={styles.badgeLabel} />
-                                    {/* "#44af69" */}
-                                    <Badge value={this.props.not_submitted} status="primary" badgeStyle={[styles.badge, {backgroundColor:Colors.yellow.opaque}]} textStyle={styles.badgeText}/>
+                                    <Badge value={this.props.students_num} status="error" size="large" badgeStyle={[styles.badge, {backgroundColor:Colors.turquoise.opaque}]} textStyle={styles.badgeText}/>
                                 </View>
                             </View>
                         </View>
